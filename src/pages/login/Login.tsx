@@ -1,62 +1,94 @@
-import "./Login.css";
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import './Login.css';
 
-export function Login() {
+import { Link, useNavigate } from 'react-router-dom';
 
-    return(
-        <>
-        <section className="flex items-center h-screen p-10 ">
+import { AuthContext } from '../../contexts/AuthContext';
+import UsuarioLogin from '../../models/UsuarioLogin';
+import { RotatingLines } from 'react-loader-spinner';
 
-        <article className="flex-1">
-        <div className=" flex justify-center items-center ">
+function Login() {
+  let navigate = useNavigate();
 
-            <img className="w-96 " src="/./src/assets/Login.png" alt="" />
-        </div>
-        </article>
-            <article className="flex-1">
-                   <div className="pb-12">
-          <h1 className="text-2xl font-semibold leading-7 text-gray-900">Login</h1>
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
+    {} as UsuarioLogin
+  );
 
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-                Nome
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+  const { email, handleLogin } = useContext(AuthContext);
 
-            <div className="sm:col-span-3">
-              <label htmlFor="Email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email
-              </label>
-              <div className="mt-2">
-                <input
-                  type="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+  const {isLoading} = useContext(AuthContext) 
 
-            <div className="sm:col-span-4">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                Senha:
-              </label>
-              <div className="mt-2">
-                <input
-                  type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-          </div>
-        </div> 
-         </article>  
-         </section>
-        </>
-    )
+  useEffect(() => {
+    if (email.token !== "") {
+        navigate('/home')
+    }
+}, [email])
 
+function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  setUsuarioLogin({
+      ...usuarioLogin,
+      [e.target.name]: e.target.value
+  })
 }
+
+function login(e: ChangeEvent<HTMLFormElement>) {
+  e.preventDefault()
+  handleLogin(usuarioLogin)
+}
+
+  return (
+    <>
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
+        <form className="flex justify-center items-center flex-col w-1/2 gap-4" onSubmit={login}>
+          <h2 className="text-slate-900 text-5xl ">Entrar</h2>
+          <div className="flex flex-col w-full">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Email"
+              className="border-2 border-slate-700 rounded p-2"
+              value={usuarioLogin.email} 
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            />
+          </div>
+          <div className="flex flex-col w-full">
+            <label htmlFor="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Senha"
+              className="border-2 border-slate-700 rounded p-2"
+              value={usuarioLogin.senha} 
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            />
+          </div>
+          <button  type='submit' className="rounded bg-indigo-400 hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
+           {isLoading ? <RotatingLines
+            strokeColor="white"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="24"
+            visible={true}
+          /> :
+            <span>Entrar</span>}
+          </button>
+
+          <hr className="border-slate-800 w-full" />
+
+          <p>
+            Ainda não tem uma conta?{' '}
+            <Link to="/cadastro" className="text-indigo-800 hover:underline">
+              Cadastre-se
+            </Link>
+          </p>
+        </form>
+        <div className="fundoLogin hidden lg:block"></div>
+      </div>
+    </>
+  );
+}
+
+export default Login;
