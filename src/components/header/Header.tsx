@@ -1,26 +1,39 @@
-import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthContext'
+
+
 
 function Navbar() {
- 
-  
+  let navigate = useNavigate()
+
+  const { email, handleLogout } = useContext(AuthContext)
+
+  function logout() {
+    handleLogout()
+    alert('Usuário deslogado com sucesso')
+    navigate('/login')
+  }
+
+  let navbarComponent
+
 
   return (
     <>
-     <div className='w-full bg-indigo-900 text-white flex justify-center py-4'>
-          <div className="container flex justify-between text-lg">
-            <div className='text-2xl font-bold uppercase'>Blog Pessoal</div>
+      <div className='w-full bg-[#21882a] text-white flex justify-center py-4'>
+        <div className="container flex justify-between text-lg">
+          <Link to='/home' className='text-2xl font-bold uppercase'>Clique</Link>
 
-            <div className='flex gap-4'>
-              <Link to='/login' className='hover:underline'>Login</Link>
-              <Link to='/home' className='hover:underline'>Home</Link>
-              <div className='hover:underline'>Postagens</div>
-              <div className='hover:underline'>Temas</div>
-              <div className='hover:underline'>Cadastrar tema</div>
-              <div className='hover:underline'>Perfil</div>
-              <div className='hover:underline'>Sair</div>
-            </div>
+          <div className='flex gap-4'>
+            <div className='font-bold cursor-pointer text-[#fde845] hover:text-[#2d2c24]'>Postagens</div>
+            <Link to='/temas' className='font-bold cursor-pointer hover:text-[#242b2d]'>Temas</Link>
+            <Link to='/cadastroTema' className='font-bold cursor-pointer hover:text-[#242b2d]'>Cadastrar tema</Link>
+            <div className='font-bold cursor-pointer hover:text-[#242b2d]'>Perfil</div>
+            <Link to='' onClick={logout} className='font-bold cursor-pointer hover:text-[#242b2d]'>Sair</Link>
+
           </div>
         </div>
+      </div>
     </>
   )
 }
