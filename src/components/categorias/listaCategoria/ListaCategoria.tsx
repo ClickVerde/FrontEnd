@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dna } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
 import Categoria from "../../../models/Categorias";
 import { buscar } from "../../../services/Service";
 import CardCategorias from "../cardCategoria/CardCategoria";
@@ -9,33 +7,9 @@ import CardCategorias from "../cardCategoria/CardCategoria";
 function ListaCategorias() {
 	const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-	let navigate = useNavigate();
-
-	const { email, handleLogout } = useContext(AuthContext); // email ou usuario?
-
-	/* No blog pessoal, o campo email era chamado de usuário, mas ao mudar pra email isso afetou a declaração e agora não dá pra declarar como "usuario", apenas como "email", caso contrário indica um erro: "Propriedade usuário não existe em AuthContextProps". Isso só é usado em duas linhas desse código, então não sei se isso seria um problema pra transparência dos nomes, já que o token deveria ser de um usuario e não de um email */
-
-	const token = email.token;
-
 	async function buscarCategorias() {
-		try {
-			await buscar("/categorias/all", setCategorias, {
-				headers: { Authorization: token },
-			});
-		} catch (error: any) {
-			if (error.toString().includes("403")) {
-				alert("O token expirou, favor logar novamente");
-				handleLogout();
-			}
-		}
+		await buscar("/categorias/all", setCategorias, {});
 	}
-
-	useEffect(() => {
-		if (token === "") {
-			alert("Você precisa estar logado");
-			navigate("/login");
-		}
-	}, [token]);
 
 	useEffect(() => {
 		buscarCategorias();
