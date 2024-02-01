@@ -8,7 +8,7 @@ import { RotatingLines } from "react-loader-spinner";
 function FormularioCategoria() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	const [Categoria, setCategoria] = useState<Categoria>({} as Categoria);
+	const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
 
 	let navigate = useNavigate();
 
@@ -33,11 +33,11 @@ function FormularioCategoria() {
 
 	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
 		setCategoria({
-			...Categoria,
+			...categoria,
 			[e.target.name]: e.target.value,
 		});
 
-		console.log(JSON.stringify(Categoria));
+		console.log(JSON.stringify(categoria));
 	}
 
 	async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
@@ -46,7 +46,7 @@ function FormularioCategoria() {
 
 		if (id !== undefined) {
 			try {
-				await atualizar(`/categorias`, Categoria, setCategoria, {
+				await atualizar(`/categorias`, categoria, setCategoria, {
 					headers: {
 						Authorization: token,
 					},
@@ -64,7 +64,7 @@ function FormularioCategoria() {
 			}
 		} else {
 			try {
-				await cadastrar(`/categorias`, Categoria, setCategoria, {
+				await cadastrar(`/categorias`, categoria, setCategoria, {
 					headers: {
 						Authorization: token,
 					},
@@ -113,7 +113,7 @@ function FormularioCategoria() {
 						placeholder="Nome"
 						name="nome"
 						className="border-2 border-slate-700 rounded p-2"
-						value={Categoria.nome}
+						value={categoria.nome}
 						onChange={(e: ChangeEvent<HTMLInputElement>) =>
 							atualizarEstado(e)
 						}
@@ -124,7 +124,7 @@ function FormularioCategoria() {
 						placeholder="Descrição"
 						name="descricao"
 						className="border-2 border-slate-700 rounded p-2"
-						value={Categoria.descricao}
+						value={categoria.descricao}
 						onChange={(e: ChangeEvent<HTMLInputElement>) =>
 							atualizarEstado(e)
 						}
@@ -135,7 +135,7 @@ function FormularioCategoria() {
 						placeholder="Link da foto"
 						name="foto"
 						className="border-2 border-slate-700 rounded p-2"
-						value={Categoria.foto}
+						value={categoria.foto}
 						onChange={(e: ChangeEvent<HTMLInputElement>) =>
 							atualizarEstado(e)
 						}

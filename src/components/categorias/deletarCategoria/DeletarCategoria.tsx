@@ -8,7 +8,7 @@ import { RotatingLines } from "react-loader-spinner";
 function DeletarCategoria() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	const [Categoria, setCategoria] = useState<Categoria>({} as Categoria);
+	const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
 
 	let navigate = useNavigate();
 
@@ -78,7 +78,7 @@ function DeletarCategoria() {
 					Categoria
 				</header>
 				<p className="p-8 text-3xl bg-slate-200 h-full">
-					{Categoria.nome}
+					{categoria.nome}
 				</p>
 				<div className="flex">
 					<button
