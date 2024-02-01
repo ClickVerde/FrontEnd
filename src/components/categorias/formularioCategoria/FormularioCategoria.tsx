@@ -14,8 +14,8 @@ function FormularioCategoria() {
 
 	const { id } = useParams<{ id: string }>();
 
-	const { email, handleLogout } = useContext(AuthContext); //email ou usuario
-	const token = email.token;
+	const { usuario, handleLogout } = useContext(AuthContext); //email ou usuario
+	const token = usuario.token;
 
 	async function buscarPorId(id: string) {
 		await buscar(`/categorias/${id}`, setCategoria, {
