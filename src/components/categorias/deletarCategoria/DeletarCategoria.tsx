@@ -14,7 +14,8 @@ function DeletarCategoria() {
 
 	const { id } = useParams<{ id: string }>();
 
-	const { usuario, handleLogout } = useContext(AuthContext); //email ou usuario
+	const { usuario, handleLogout } = useContext(AuthContext);
+	
 	const token = usuario.token;
 
 	async function buscarPorId(id: string) {

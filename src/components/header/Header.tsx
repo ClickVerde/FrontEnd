@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext'
 function Navbar() {
   let navigate = useNavigate()
 
-  const { email, handleLogout } = useContext(AuthContext)
+ const { usuario, handleLogout } = useContext(AuthContext)
 
   function logout() {
     handleLogout()
@@ -15,7 +15,7 @@ function Navbar() {
     navigate('/login')
   }
 
-  let navbarComponent
+ let navbarComponent
 
 
   return (
@@ -25,7 +25,7 @@ function Navbar() {
           <Link to='/home' className='text-2xl font-bold uppercase'>Clique</Link>
 
           <div className='flex gap-4'>
-            <div className='font-bold cursor-pointer text-[#fde845] hover:text-[#2d2c24]'>Postagens</div>
+            <Link to='/produtos' className='font-bold cursor-pointer text-[] hover:text-[#2d2c24]'>Produtos</Link>
             <Link to='/categorias/all' className='font-bold cursor-pointer hover:text-[#242b2d]'>Categorias</Link>
             <Link to='/cadastroCategoria' className='font-bold cursor-pointer hover:text-[#242b2d]'>Cadastrar categoria</Link>
             <div className='font-bold cursor-pointer hover:text-[#242b2d]'>Perfil</div>
@@ -34,6 +34,7 @@ function Navbar() {
           </div>
         </div>
       </div>
+      
     </>
   )
 }

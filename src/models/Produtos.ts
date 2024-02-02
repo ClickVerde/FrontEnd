@@ -1,7 +1,7 @@
-import Tema from './Categorias';
+import Categoria from './Categorias';
 import Usuario from './Usuario';
 
-export default interface Postagem {
+export default interface Produto {
   id: number;
   nome: string;
   preco: number;
@@ -10,6 +10,6 @@ export default interface Postagem {
   descricao: string;
   qtd_vendas: number;
   data: string;
-  tema: Tema | null;
+  categoria: Categoria | null;
   usuario: Usuario | null;
 }
