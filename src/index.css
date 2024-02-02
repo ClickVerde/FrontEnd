@@ -79,6 +79,12 @@ h6 {
     color: #3E5622;
 }
 
+.textButton {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
 
 .paragraph {
     font-family: 'Open Sans', sans-serif;

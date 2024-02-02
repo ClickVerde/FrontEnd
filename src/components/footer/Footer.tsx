@@ -1,4 +1,3 @@
-import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
 import Logo from '../../assets/Logo.svg';
 import Instagram from '../../assets/icons/instagram.svg';
 import Facebook from '../../assets/icons/facebook.svg';
@@ -13,7 +12,7 @@ function Footer() {
 
   return (
     <>
-      <div className="flex justify-around gap-5 align-middle p-10">
+      <div className="flex justify-around gap-5 align-middle p-10 mt-20">
         <div className="grid grid-rows justify-items-center">
 
           <div className='grid grid-rows-3 p-4 text-end'>

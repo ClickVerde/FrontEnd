@@ -8,6 +8,7 @@ import PlantaRight from '../../assets/icons/PlantaRight.svg';
 import PlantaLeft from '../../assets/icons/PlantaLeft.svg';
 import LoginImage from '../../assets/Login.png';
 import Arrow from '../../assets/icons/arrow_white.svg';
+import './../../index.css'
 
 function Login() {
   let navigate = useNavigate();
@@ -16,15 +17,15 @@ function Login() {
     {} as UsuarioLogin
   );
 
-  const { email, handleLogin } = useContext(AuthContext);
+  const { usuario, handleLogin } = useContext(AuthContext);
 
   const { isLoading } = useContext(AuthContext)
 
   useEffect(() => {
-    if (email.token !== "") {
+    if (usuario.token !== "") {
       navigate('/home')
     }
-  }, [email])
+  }, [usuario])
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuarioLogin({
@@ -102,7 +103,7 @@ function Login() {
                 visible={true}
               /> :
                 <span className='flex'>Entrar
-                <img src={Arrow} className='w-4 ms-2'/>
+                  <img src={Arrow} className='w-4 ms-2' />
                 </span>}
             </button>
 

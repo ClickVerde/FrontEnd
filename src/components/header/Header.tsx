@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { Fragment, useContext } from 'react'
 import SearchIcon from '../../assets/icons/SearchIcon.svg'
 import Seta from '../../assets/icons/seta.svg'
 import Logo from '../../assets/Logo.svg';
@@ -7,11 +7,17 @@ import { AuthContext } from '../../contexts/AuthContext'
 import User from '../../assets/icons/usericon.svg';
 import Cart from '../../assets/icons/carticon.svg';
 import '../../index.css';
+import { CaretDown } from '@phosphor-icons/react';
+import { Menu, Transition } from '@headlessui/react';
+
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
 
 function Navbar() {
   let navigate = useNavigate()
 
-  const { email, handleLogout } = useContext(AuthContext)
+  const { usuario, handleLogout } = useContext(AuthContext)
 
   function logout() {
     handleLogout()
@@ -32,13 +38,87 @@ function Navbar() {
 
         <section className='flex justify-between gap-6'>
           <div className='text-darkMossGreen p-4 grid gap-10 grid-flow-col items-center font-bold text-[20px] ]'>
-            <a >Home</a>
-            <a >Produtos</a>
+            <Link to="/home" className='transition duration-300 ease-in-out hover:text-sunglow'>Home</Link>
+            <Link to="/produtos/all" className='transition duration-300 ease-in-out hover:text-sunglow'>Produtos</Link>
             <a className='flex' >
-              <p>Categorias</p>
-              <img src={Seta} className='px-1'></img>
+              <Menu
+							as="div"
+							className="relative inline-block text-left"
+						>
+							<div>
+								<Menu.Button className="transition duration-300 ease-in-out hover:text-sunglow inline-flex w-full justify-center gap-x-1.5 px-3 py-2">
+									Categorias
+									<CaretDown
+										size={12}
+										className="-mr-1 h-8  text-gray-400"
+										aria-hidden="true"
+									/>
+								</Menu.Button>
+							</div>
+
+							<Transition
+								as={Fragment}
+								enter="transition ease-out duration-100"
+								enterFrom="transform opacity-0 scale-95"
+								enterTo="transform opacity-100 scale-100"
+								leave="transition ease-in duration-75"
+								leaveFrom="transform opacity-100 scale-100"
+								leaveTo="transform opacity-0 scale-95"
+							>
+								<Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+									<div className="py-1">
+										<Menu.Item>
+											{({ active }) => (
+												<Link
+													to="/categorias/all"
+													className={classNames(
+														active
+															? "bg-gray-100 text-gray-900"
+															: "text-gray-700",
+														"block px-4 py-2 text-sm"
+													)}
+												>
+													Todas as categorias
+												</Link>
+											)}
+										</Menu.Item>
+										<Menu.Item>
+											{({ active }) => (
+												<Link
+													to="/home"
+													className={classNames(
+														active
+															? "bg-gray-100 text-gray-900"
+															: "text-gray-700",
+														"block px-4 py-2 text-sm"
+													)}
+												>
+													Home
+												</Link>
+											)}
+										</Menu.Item>
+										<Menu.Item>
+											{({ active }) => (
+												<Link
+													to="/C"
+													className={classNames(
+														active
+															? "bg-gray-100 text-gray-900"
+															: "text-gray-700",
+														"block px-4 py-2 text-sm"
+													)}
+												>
+													Categoria C
+												</Link>
+											)}
+										</Menu.Item>
+									</div>
+								</Menu.Items>
+							</Transition>
+						</Menu>
+            
             </a>
-            <a >Sobre</a>
+            <a className='transition duration-300 ease-in-out hover:text-sunglow'>Sobre</a>
           </div>
 
           <div className='div-focus flex p-[5px] rounded-full self-center bg-seasalt border border-emerald input-pesquisa'>

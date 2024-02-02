@@ -1,4 +1,4 @@
-export default interface Tema {
+export default interface Categoria {
     id: number;
     nome: string;
     descricao: string;
