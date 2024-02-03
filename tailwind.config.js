@@ -8,7 +8,10 @@ export const theme = {
     colors: {
       'emerald': '#7BD389', // Escrever (attribute-)emerald para usar
       'darkMossGreen': '#3E5622',
-      'sunglow': '#FFD242',
+      'sunglow': {
+        light: '#FFE499',
+        DEFAULT: '#FFD242'
+      },
       'davysGray': '#525C60',
       'seasalt': '#FAFAFA',
     },
