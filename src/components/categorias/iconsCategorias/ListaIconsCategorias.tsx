@@ -21,11 +21,11 @@ function ListaIConsCategorias() {
     <div className="bg-darkMossGreen flex justify-center mb-5">
       <div className="container flex flex-col items-center justify-center text-white">
         <div className="mt-4">
-          <h2 className="font-Roboto text-white mb-5">
+          <h5 className="font-Roboto text-white mb-5">
             Conheça nossas categorias
-          </h2>
+          </h5>
         </div>
-        <div className="px-1 py-1 flex overflow-x-auto ">
+        <div className="px-1 py-1 flex ">
           {categorias.map((categoria) => (
             <IconsCategorias key={categoria.id} categoria={categoria} />
           ))}

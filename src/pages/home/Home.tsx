@@ -1,32 +1,58 @@
+import { Link } from "react-router-dom";
+import Arrow from "../../assets/icons/arrow_green.svg";
 import ListaIConsCategorias from "../../components/categorias/iconsCategorias/ListaIconsCategorias";
+import { Preloader } from "../../components/preloader/Preloader";
 import ListaProduto from "../../components/produtos/listaProduto/ListaProduto";
+import "./Home.css";
 
 function Home() {
   return (
     <>
+      <Preloader></Preloader>
       <main>
-        <section className="w-full h-[250px] bg-seasalt flex justify-center items-center ">
-          <div className="flex gap-4 ">
-            <h2>Home</h2>
+        <section className="h-[400px] overflow-hidden bg-seasalt flex justify-center items-center">
+          <div className="flex gap-4 image-container p-[200px]">
+            <div className="w-[500px] border-red flex flex-col justify-center">
+              <p className="font-yellowtail text-emerald text-[20px]">
+                100% Eco-friendly
+              </p>
+              <h3>Faça a melhor escolha de produtos eco-friendly</h3>
+              <button
+                type="submit"
+                className="mt-4 rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen w-2/6 h-[60px] p-4 flex justify-center items-center"
+              >
+                <span className="flex">
+                  Ver agora!
+                  <img src={Arrow} className="w-4 ms-2" />
+                </span>
+              </button>
+            </div>
           </div>
         </section>
+
         <ListaIConsCategorias />
 
-        <section className="w-ful flex justify-center items-center mt-[100px]  mb-[40px] ">
+        <section className="w-ful flex justify-center items-center mt-[50px]  mb-[40px] ">
           <div className="flex gap-4 ">
-            <h2>Alguns dos nossos produtos</h2>
+            <h5>Alguns dos nossos Produtos</h5>
           </div>
         </section>
         <ListaProduto />
 
-        <section className="flex justify-center">
-          <div className="w-4/6 flex justify-around items-center ">
-            <div>
-              <h2>Produtos</h2>
-            </div>
-            <div>
-              <h2>Categorias</h2>
-            </div>
+        <section className="flex justify-center mt-[70px]">
+          <div className="justify-around items-center grid grid-cols-2 gap-5 container">
+            <Link
+              to="produtos/all"
+              className=" bg-seasalt rounded-2xl  flex justify-center items-center	 h-[300px] "
+            >
+              <h5>Produtos</h5>
+            </Link>
+            <Link
+              to="categorias/all"
+              className=" bg-seasalt rounded-2xl flex justify-center items-center	 h-[300px]"
+            >
+              <h5>Categorias</h5>
+            </Link>
           </div>
         </section>
       </main>

@@ -102,14 +102,14 @@ function Navbar() {
     <>
       <header className="w-full bg-white text-white flex justify-between align-middle py-[1rem] px-[4rem] ">
         <div>
-          <img src={Logo} className="xl:w-28 sm:w-25"></img>
+          <img src={Logo} className="xl:w-20 sm:w-20"></img>
         </div>
 
         <section className="flex justify-between gap-6">
-          <div className="text-darkMossGreen p-4 grid gap-10 grid-flow-col items-center font-bold text-[20px] ]">
+          <div className="text-darkMossGreen p-4 grid gap-10 grid-flow-col items-center font-bold text-[16px] ]">
             <Link
               to="/home"
-              className="transition duration-300 ease-in-out hover:text-sunglow"
+              className="transition duration-300 ease-in-out hover:text-sunglow  "
             >
               Home
             </Link>
@@ -120,12 +120,12 @@ function Navbar() {
               Produtos
             </Link>
             <Menu as="div" className="relative inline-block">
-              <div className="flex">
-                <Menu.Button className="transition duration-300 ease-in-out hover:text-sunglow inline-flex w-full">
+              <div className="flex group">
+                <Menu.Button className="transition duration-300 ease-in-out group-hover:text-sunglow inline-flex w-full">
                   Categorias
                   <CaretDown
                     size={10}
-                    className="-mr-1 self-center text-darkMossGreen flex"
+                    className="ms-1 self-center text-darkMossGreen flex transition duration-300 ease-in-out group-hover:text-sunglow"
                     weight="bold"
                     aria-hidden="true"
                   />
@@ -143,6 +143,14 @@ function Navbar() {
               >
                 <Menu.Items className="absolute inset-x-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-seasalt shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="px-1 py-1">
+                    <Menu.Item>
+                      <Link
+                        to={`/categorias/all`}
+                        className="block px-4 py-2 text-[12px]  bg-seasalt text-darkMossGreen hover:bg-sunglow-light rounded-md transition duration-300 ease-in-out"
+                      >
+                        Todas Categorias
+                      </Link>
+                    </Menu.Item>
                     {categorias.map((categoria) => (
                       <Menu.Item key={categoria.id}>
                         <MenuCategorias categoria={categoria} />
@@ -157,15 +165,15 @@ function Navbar() {
             </a>
           </div>
 
-          <div className="div-focus flex p-[5px] rounded-full self-center bg-seasalt border border-emerald input-pesquisa">
+          <div className="div-focus flex p-[5px] rounded-full self-center  bg-seasalt border border-emerald input-pesquisa">
             <input
               type="text"
               placeholder="Pesquisar"
               name="descricao"
-              className="w-[15vw] h-[2vw] border-none rounded-full p-2 self-center input-pesquisa"
+              className="w-[16vw] h-[10px] border-none rounded-full p-2 self-center input-pesquisa"
             />
-            <button>
-              <img className="w-10" src={SearchIcon} alt="" />
+            <button className="group bg-emerald rounded-full w-7 h-7 flex justify-center	">
+              <img className="w-4 self-center" src={SearchIcon} alt="" />
             </button>
           </div>
 
@@ -177,13 +185,13 @@ function Navbar() {
               >
                 <div className="flex group">
                   <Menu.Button className="transition duration-300 ease-in-out group-hover:text-sunglow inline-flex w-full">
-                    <img src={User} className="w-10"></img>
+                    <img src={User} className="w-7"></img>
                     <p className="flex headerBtn ps-2 pe-1 items-center self-center">
                       Perfil
                     </p>
                     <CaretDown
                       size={10}
-                      className="me-2 self-center text-darkMossGreen transition duration-300 ease-in-out group-hover:text-sunglow"
+                      className="me-2 self-center text-darkMossGreen text-[12px] transition duration-300 ease-in-out group-hover:text-sunglow"
                       weight="bold"
                       aria-hidden="true"
                     />
@@ -204,8 +212,8 @@ function Navbar() {
               </Menu>
             </div>
 
-            <div className="flex rounded-[12rem] items-center border-emerald border p-[5px]">
-              <img src={Cart} className="w-10"></img>
+            <div className="flex rounded-[12rem] items-center border-emerald border p-[1px] px-[5px]">
+              <img src={Cart} className="w-7"></img>
               <p className="headerBtn text-darkMossGreen p-2">Carrinho</p>
             </div>
           </div>

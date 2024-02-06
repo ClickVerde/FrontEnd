@@ -1,39 +1,44 @@
-import coracao from '../../../assets/icons/heart.svg';
-import Produto from '../../../models/Produtos';
+import coracao from "../../../assets/icons/heart.svg";
+import Produto from "../../../models/Produtos";
 interface CardProdutoProps {
-  prod: Produto
+  prod: Produto;
 }
 
 function CardProduto({ prod }: CardProdutoProps) {
   return (
-
     <>
-      <div className='grid grid-row-3 gap-4  rounded-[30px] bg-seasalt px-6 py-4'>
+      <div className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2">
         <div>
-        <div className='bg-[#3E5622] w-min p-1 px-2 h-min rounded-lg text-center m-4'>
-          <p className='text-white text-[10px] fontCategoriaProdutoCard w-max font-bold capitalize '>{prod.categoria?.nome}</p>
-        </div>
-        <img src={prod.foto} className=' w-[400px] h-[300px] object-cover rounded-[30px]' alt="" />
-        </div>
-
-        <div className='grid gap-1'>
-        <p className=' fontProdutoNameCard text-[20px] text-darkMossGreen capitalize my-3'>{prod.nome}</p>
-        <div className=''>
-          <hr/>
-        </div>
-        <div className='flex justify-between fontProdutoNameCard text-[17px] text-darkMossGreen'>
-        <p className='  font-semibold uppercase'>R${prod.preco}</p>
-        <p className=' flex gap-2 font-semibold'>
-        <img src={coracao} alt="icone de coração" />{prod.likes}
-        </p>
-        </div>
+          <div className="bg-[#3E5622] w-min p-1 px-2 h-min rounded-md text-center m-4">
+            <p className="text-white fontCategoriaProdutoCard w-max font-bold capitalize ">
+              {prod.categoria?.nome}
+            </p>
+          </div>
+          <img
+            src={prod.foto}
+            className=" w-[275px] h-[200px] object-cover rounded-[15px]"
+            alt=""
+          />
         </div>
 
+        <div className="grid gap-1">
+          <p className=" fontProdutoNameCard text-[16px] text-darkMossGreen capitalize my-1">
+            {prod.nome}
+          </p>
+          <div className="">
+            <hr />
+          </div>
+          <div className="flex justify-between fontProdutoNameCard text-[15px] text-darkMossGreen">
+            <p className="  font-semibold uppercase">R${prod.preco}</p>
+            <p className=" flex gap-1 font-semibold">
+              <img src={coracao} alt="icone de coração" />
+              {prod.likes}
+            </p>
+          </div>
+        </div>
       </div>
-
     </>
-
-  )
+  );
 
   /* <p>{prod.descricao}</p>
     <p>Categoria: {prod.categoria?.descricao}</p>
