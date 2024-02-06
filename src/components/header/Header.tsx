@@ -1,6 +1,5 @@
 import { Fragment, useContext } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon.svg";
-import Seta from "../../assets/icons/seta.svg";
 import Logo from "../../assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -10,10 +9,6 @@ import "../../index.css";
 import { CaretDown, SignIn, SignOut, UserSquare } from "@phosphor-icons/react";
 import { Menu, Transition } from "@headlessui/react";
 import { toastAlerta } from "../../utils/toastAlerta";
-
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
 
 function Navbar() {
 	let navigate = useNavigate();
