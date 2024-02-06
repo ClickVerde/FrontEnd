@@ -1,44 +1,27 @@
 import { useEffect, useState } from "react";
-import { Dna } from "react-loader-spinner";
+import { LineWave } from "react-loader-spinner";
 import Categoria from "../../../models/Categorias";
-import { buscar } from "../../../services/Service";
 import CardCategorias from "../cardCategoria/CardCategoria";
+import defaultCategorias from "../defaultCategorias/defaultCategorias";
 
 function ListaCategorias() {
 	const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-	async function buscarCategorias() {
-		await buscar("/categorias/all", setCategorias, {});
-	}
-
 	useEffect(() => {
-		buscarCategorias();
-	}, [categorias.length]);
+		setCategorias(defaultCategorias);
+	}, []);
+
 	return (
 		<>
-			{categorias.length === 0 && (
-				<Dna
-					visible={true}
-					height="200"
-					width="200"
-					ariaLabel="dna-loading"
-					wrapperStyle={{}}
-					wrapperClass="dna-wrapper mx-auto"
-				/>
-			)}
-			<div className="flex justify-center w-full my-4">
-				<div className="container flex flex-col">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{categorias.map((categoria) => (
-							<>
-								<CardCategorias
-									key={categoria.id}
-									categoria={categoria}
-								/>
-							</>
-						))}
-					</div>
-				</div>
+			<div className="mt-[40px] w-4/6 container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+				{categorias.map((categoria) => (
+					<>
+						<CardCategorias
+							key={categoria.id}
+							categoria={categoria}
+						/>
+					</>
+				))}
 			</div>
 		</>
 	);
