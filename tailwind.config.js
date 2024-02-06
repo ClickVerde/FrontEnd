@@ -17,7 +17,8 @@ export const theme = {
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'], // Escrever font-roboto para usar
-      openSans: ['Open Sans', 'sans-serif'] // Escrever font-openSans para usar
+      openSans: ['Open Sans', 'sans-serif'], // Escrever font-openSans para usar
+      yellowtail: ['Yellowtail', 'sans-serif']
     },
   },
 };

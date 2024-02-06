@@ -14,7 +14,7 @@ function CardProduto({ prod }: CardProdutoProps) {
         <button className='bg-[#3E5622] max-w-[20%] h-[50%] rounded-xl text-center m-4'>
           <p className='text-white text-[10px] font-bold uppercase '>{prod.nome}</p>
         </button>
-        <img src={prod.foto} className='p-4 w-[400px] h-[300px] object-cover rounded-[30px] border border-red-600' alt="" />
+        <img src={prod.foto} className='p-4 w-[400px] h-[300px] object-cover rounded-[30px]' alt="" />
         <p className='pl-4 py-4 text-sm font-semibold uppercase'>{prod.categoria?.nome}</p>
         <hr />
         <p className='pl-4 text-sm font-semibold uppercase'>{prod.preco} R$</p>
