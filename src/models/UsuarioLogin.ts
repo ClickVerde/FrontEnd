@@ -6,5 +6,6 @@ export default interface UsuarioLogin {
   foto: string;
   cpf_cnpj: string;
   tipo: string;
+  data: string;
   token: string;
 }

@@ -26,7 +26,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 		foto: "",
 		cpf_cnpj: "",
 		tipo: "",
-		token: "",
+		data: "",
+		token: ""
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +54,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 			foto: "",
 			cpf_cnpj: "",
 			tipo: "",
-			token: "",
+			data: "",
+			token: ""
 		});
 	}
 
