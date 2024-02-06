@@ -8,9 +8,11 @@ interface CardCategoriaProps {
 function CardCategorias({categoria}: CardCategoriaProps) {
   return (
     <div className='bflex flex-coloverflow-hidden justify-between object-cover'>
-      <img className=' w-[400px] h-[400px] object-cover rounded-[30px]' src={categoria.foto} alt="" />
-      <p className='p-4 text-lg font-bold text-[#3E5622]'>{categoria.nome}</p>
-      <p className='pl-4 pb-4 font-bold text-[12px] h-full text-[#5b852b]'>{categoria.descricao}</p>
+      <div className=' w-[350px] h-[350px]'>
+        <img className=' object-cover rounded-[30px]' src={categoria.foto} alt="" />
+      </div>
+      <h6 className='p-4 font-bold text-[#3E5622]'>{categoria.nome}</h6>
+
       
       {/* <div className="flex">
         <Link to={`/editarCategoria/${categoria.id}`} className='w-full text-black hover:text-blue-600 flex items-center justify-center py-2'>

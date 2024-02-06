@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Dna } from "react-loader-spinner";
+import { LineWave } from "react-loader-spinner";
 import Produto from "../../../models/Produtos";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
@@ -30,13 +30,14 @@ function ListaProduto() {
 	return (
 		<>
 			{produtos.length === 0 && (
-				<Dna
+				<LineWave
 					visible={true}
 					height="200"
-					width="200"
-					ariaLabel="dna-loading"
+					width="2000"
+					color="#3E5622"
+					ariaLabel="tail-spin-loading"
 					wrapperStyle={{}}
-					wrapperClass="dna-wrapper mx-auto"
+					wrapperClass=""
 				/>
 			)}
 			<div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

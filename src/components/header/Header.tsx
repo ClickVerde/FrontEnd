@@ -9,6 +9,7 @@ import "../../index.css";
 import { CaretDown, SignIn, SignOut, UserSquare } from "@phosphor-icons/react";
 import { Menu, Transition } from "@headlessui/react";
 import { toastAlerta } from "../../utils/toastAlerta";
+import Perfil from "../../pages/perfil/Perfil";
 
 function Navbar() {
 	let navigate = useNavigate();
@@ -73,6 +74,7 @@ function Navbar() {
 							/>
 							<p className="px-2">Entrar</p>
 						</Link>
+						
 					</Menu.Item>
 				</div>
 			</Menu.Items>
@@ -99,6 +101,12 @@ function Navbar() {
 							className="transition duration-300 ease-in-out hover:text-sunglow"
 						>
 							Produtos
+						</Link>
+						<Link
+							to="/perfil"
+							className="transition duration-300 ease-in-out hover:text-sunglow"
+						>
+							Perfil
 						</Link>
 						<Menu as="div" className="relative inline-block">
 							<div className="flex">
