@@ -1,7 +1,5 @@
-import Produto from '../../../models/Produtos'
-import { Link } from 'react-router-dom';
-import defaultImage from '../../../assets/Photo.png';
-
+import coracao from '../../../assets/icons/heart.svg';
+import Produto from '../../../models/Produtos';
 interface CardProdutoProps {
   prod: Produto
 }
@@ -10,15 +8,27 @@ function CardProduto({ prod }: CardProdutoProps) {
   return (
 
     <>
-      <div className='grid grid-row-3 border-t shadow-lg rounded-[30px] w-[335px] h-[483px] bg-seasalt'>
-        <button className='bg-[#3E5622] max-w-[20%] h-[50%] rounded-xl text-center m-4'>
-          <p className='text-white text-[10px] font-bold uppercase '>{prod.nome}</p>
-        </button>
-        <img src={prod.foto} className='p-4 w-[400px] h-[300px] object-cover rounded-[30px]' alt="" />
-        <p className='pl-4 py-4 text-sm font-semibold uppercase'>{prod.categoria?.nome}</p>
-        <hr />
-        <p className='pl-4 text-sm font-semibold uppercase'>{prod.preco} R$</p>
-        <p className='pb-6 pl-4 text-sm font-semibold'>{prod.quantidade} Qtd</p>
+      <div className='grid grid-row-3 gap-4  rounded-[30px] bg-seasalt px-6 py-4'>
+        <div>
+        <div className='bg-[#3E5622] w-min p-1 px-2 h-min rounded-lg text-center m-4'>
+          <p className='text-white text-[10px] fontCategoriaProdutoCard w-max font-bold capitalize '>{prod.categoria?.nome}</p>
+        </div>
+        <img src={prod.foto} className=' w-[400px] h-[300px] object-cover rounded-[30px]' alt="" />
+        </div>
+
+        <div className='grid gap-1'>
+        <p className=' fontProdutoNameCard text-[20px] text-darkMossGreen capitalize my-3'>{prod.nome}</p>
+        <div className=''>
+          <hr/>
+        </div>
+        <div className='flex justify-between fontProdutoNameCard text-[17px] text-darkMossGreen'>
+        <p className='  font-semibold uppercase'>R${prod.preco}</p>
+        <p className=' flex gap-2 font-semibold'>
+        <img src={coracao} alt="icone de coração" />{prod.likes}
+        </p>
+        </div>
+        </div>
+
       </div>
 
     </>

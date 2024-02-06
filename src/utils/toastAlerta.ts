@@ -48,19 +48,5 @@ export function toastAlerta(mensagem: string, tipo: string) {
 				progress: undefined,
 			});
 			break;
-
-		// se o param. tipo tiver um valor diferente dos demais, um alerta do tipo INFO é executado, ou seja, um alerta INFORMATIVO com a msg é exibido
-		default:
-			toast.info(mensagem, {
-				position: "top-right",
-				autoClose: 2000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: false,
-				draggable: false,
-				theme: "colored",
-				progress: undefined,
-			});
-			break;
 	}
 }

@@ -9,6 +9,7 @@ export default interface Produto {
   foto: string;
   descricao: string;
   qtd_vendas: number;
+  likes: number;
   data: string;
   categoria: Categoria | null;
   usuario: Usuario | null;
