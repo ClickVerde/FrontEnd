@@ -11,7 +11,7 @@ import "../../index.css";
 import Categoria from "../../models/Categorias";
 import { buscar } from '../../services/Service';
 import { toastAlerta } from "../../utils/toastAlerta";
-import MenuCategorias from "./menuCategorias/menuCategorias";
+import MenuCategorias from "./menuCategorias/MenuCategorias";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");

@@ -36,7 +36,7 @@ function App() {
 								element={<ListaCategoria />}
 							/>
 							<Route
-								path="/categorias/:id"
+								path="/abc/:id"
 								element={<FormularioCategoria />}
 							/>
 							<Route
