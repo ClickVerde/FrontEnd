@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Categoria from "../../../models/Categorias";
 import { buscar, deletar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { toastAlerta } from "../../../utils/toastAlerta";
 
 function DeletarCategoria() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -15,7 +16,7 @@ function DeletarCategoria() {
 	const { id } = useParams<{ id: string }>();
 
 	const { usuario, handleLogout } = useContext(AuthContext);
-	
+
 	const token = usuario.token;
 
 	async function buscarPorId(id: string) {
@@ -27,7 +28,7 @@ function DeletarCategoria() {
 			});
 		} catch (error: any) {
 			if (error.toString().includes("403")) {
-				alert("O token expirou, favor logar novamente");
+				toastAlerta("O token expirou, favor logar novamente", "info");
 				handleLogout();
 			}
 		}
@@ -35,7 +36,7 @@ function DeletarCategoria() {
 
 	useEffect(() => {
 		if (token === "") {
-			alert("Você precisa estar logado");
+			toastAlerta("Você precisa estar logado", "info");
 			navigate("/login");
 		}
 	}, [token]);
@@ -59,9 +60,9 @@ function DeletarCategoria() {
 				},
 			});
 
-			alert("Categoria apagada com sucesso");
+			toastAlerta("Categoria apagada com sucesso", "sucesso");
 		} catch (error) {
-			alert("Erro ao apagar a categoria");
+			toastAlerta("Erro ao apagar a categoria", "erro");
 		}
 
 		retornar();

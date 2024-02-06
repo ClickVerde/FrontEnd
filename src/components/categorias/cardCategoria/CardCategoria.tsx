@@ -7,17 +7,22 @@ interface CardCategoriaProps {
 
 function CardCategorias({categoria}: CardCategoriaProps) {
   return (
-    <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-      <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>Categoria</header>
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{categoria.nome}</p>
-      <div className="flex">
-        <Link to={`/editarCategoria/${categoria.id}`} className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 flex items-center justify-center py-2'>
+    <div className='bflex flex-coloverflow-hidden justify-between object-cover'>
+      <div className=' w-[350px] h-[350px]'>
+        <img className=' object-cover rounded-[30px]' src={categoria.foto} alt="" />
+      </div>
+      <h6 className='p-4 font-bold text-[#3E5622]'>{categoria.nome}</h6>
+
+      
+      {/* <div className="flex">
+        <Link to={`/editarCategoria/${categoria.id}`} className='w-full text-black hover:text-blue-600 flex items-center justify-center py-2'>
           <button>Editar</button>
         </Link>
-        <Link to={`/deletarCategoria/${categoria.id}`} className='text-slate-100 bg-red-400 hover:bg-red-700 w-full flex items-center justify-center'>
+        <Link to={`/deletarCategoria/${categoria.id}`} className='text-black hover:text-red-600 w-full flex items-center justify-center'>
           <button>Deletar</button>
         </Link>
-      </div>
+      </div> */}
+
     </div>
   )
 }
