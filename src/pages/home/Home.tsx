@@ -1,23 +1,36 @@
-import { useContext } from 'react';
-
-import { AuthContext } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import ListaIConsCategorias from "../../components/categorias/iconsCategorias/ListaIconsCategorias";
+import ListaProduto from "../../components/produtos/listaProduto/ListaProduto";
 
 function Home() {
-  const { usuario } = useContext(AuthContext);
-
   return (
-    <div className='flex justify-center items-center'>
-      <div>
-        <h2 className="text-slate-900 text-5xl  my-4">Logar</h2>
-        <h2 className="text-slate-900 text-4xl ">Ola user : {usuario.nome}</h2>
-        <Link to="/login" className="my-4 rounded bg-indigo-400
-         hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
-          Voltar 
-        </Link>
-      </div>
+    <>
+      <main>
+        <section className="w-full h-[250px] bg-seasalt flex justify-center items-center ">
+          <div className="flex gap-4 ">
+            <h2>Home</h2>
+          </div>
+        </section>
+        <ListaIConsCategorias />
 
-    </div>
+        <section className="w-ful flex justify-center items-center mt-[100px]  mb-[40px] ">
+          <div className="flex gap-4 ">
+            <h2>Alguns dos nossos produtos</h2>
+          </div>
+        </section>
+        <ListaProduto />
+
+        <section className="flex justify-center">
+          <div className="w-4/6 flex justify-around items-center ">
+            <div>
+              <h2>Produtos</h2>
+            </div>
+            <div>
+              <h2>Categorias</h2>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
