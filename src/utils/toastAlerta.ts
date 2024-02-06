@@ -1,10 +1,13 @@
 import { toast } from "react-toastify";
 
 // Função que vai receber uma mensagem e o tipo da mensagem (erro, sucesso e info) e criar o alerta personalizado
+
 export function toastAlerta(mensagem: string, tipo: string) {
 	// Estrutura de decisão baseada em caso, para uma
+
 	switch (tipo) {
 		// se o param. tipo tiver o valor SUCESSO, esse caso é executado, ou seja, um alerta de SUCESSO com a msg é exibido
+
 		case "sucesso":
 			toast.success(mensagem, {
 				position: "top-right",
@@ -13,7 +16,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
 				closeOnClick: true,
 				pauseOnHover: false,
 				draggable: false,
-				theme: "colored",
+				theme: "light",
 				progress: undefined,
 			});
 			break;
