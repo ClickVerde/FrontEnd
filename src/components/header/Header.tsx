@@ -9,6 +9,7 @@ import Cart from "../../assets/icons/carticon.svg";
 import "../../index.css";
 import { CaretDown, SignIn, SignOut, UserSquare } from "@phosphor-icons/react";
 import { Menu, Transition } from "@headlessui/react";
+import { toastAlerta } from "../../utils/toastAlerta";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -21,7 +22,7 @@ function Navbar() {
 
 	function logout() {
 		handleLogout();
-		alert("Usuário deslogado com sucesso");
+		toastAlerta("Usuário deslogado com sucesso", "sucesso");
 		navigate("/login");
 	}
 
@@ -33,7 +34,7 @@ function Navbar() {
 				<div className="px-1 py-1">
 					<Menu.Item>
 						<Link
-							to="/login"
+							to="/perfil"
 							className="flex px-4 py-2 text-sm  bg-seasalt text-darkMossGreen hover:bg-sunglow-light
 													rounded-md transition duration-300 ease-in-out"
 						>

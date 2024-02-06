@@ -10,15 +10,19 @@ import { AuthProvider } from "./contexts/AuthContext";
 import DeletarCategoria from "./components/categorias/deletarCategoria/DeletarCategoria";
 import FormularioCategoria from "./components/categorias/formularioCategoria/FormularioCategoria";
 import ListaCategoria from "./components/categorias/listaCategoria/ListaCategoria";
-import ListaProduto from './components/produtos/listaProduto/ListaProduto';
-import FormularioProduto from './components/produtos/formularioProduto/FormularioProduto';
-import DeletarProduto from './components/produtos/deletarProduto/DeletarProduto';
+import ListaProduto from "./components/produtos/listaProduto/ListaProduto";
+import FormularioProduto from "./components/produtos/formularioProduto/FormularioProduto";
+import DeletarProduto from "./components/produtos/deletarProduto/DeletarProduto";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import Perfil from "./pages/perfil/Perfil";
 
 function App() {
 	return (
 		<>
 			<AuthProvider>
+				<ToastContainer />
 				<BrowserRouter>
 					<Navbar />
 					<div className="min-h-[80vh]">
@@ -43,10 +47,23 @@ function App() {
 								path="/deletarCategoria/:id"
 								element={<DeletarCategoria />}
 							/>
-							<Route path="/produtos/all" element={<ListaProduto/>} />
-              <Route path="/cadastroProduto" element={<FormularioProduto />} />
-              <Route path="/editarProduto/:id" element={<FormularioProduto/>} />
-							<Route path="/deletarProduto/:id" element={<DeletarProduto />}/>
+							<Route
+								path="/produtos/all"
+								element={<ListaProduto />}
+							/>
+							<Route
+								path="/cadastroProduto"
+								element={<FormularioProduto />}
+							/>
+							<Route
+								path="/editarProduto/:id"
+								element={<FormularioProduto />}
+							/>
+							<Route
+								path="/deletarProduto/:id"
+								element={<DeletarProduto />}
+							/>
+							<Route path="/perfil" element={<Perfil />} />
 						</Routes>
 					</div>
 					<Footer />
