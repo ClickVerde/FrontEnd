@@ -1,5 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Listbox, Transition } from "@headlessui/react";
 import Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
@@ -9,9 +10,17 @@ import PlantaLeft from "../../assets/icons/PlantaLeft.svg";
 import Arrow from "../../assets/icons/arrow_white.svg";
 import "./../../index.css";
 import { toastAlerta } from "../../utils/toastAlerta";
+import { CaretDown, CheckCircle } from "@phosphor-icons/react";
+
+const options = [
+	{ type: "Quero comprar", textPlaceholder: "CPF" },
+	{ type: "Quero vender", textPlaceholder: "CNPJ" },
+];
 
 function Cadastro() {
 	let navigate = useNavigate();
+
+	const [selected, setSelected] = useState(options[0]);
 
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -86,29 +95,6 @@ function Cadastro() {
 		}
 	}
 
-	const [queroComprar, setQueroComprar] = useState<boolean>(true);
-	const [tipo, setTipo] = useState<string>("CPF");
-
-	const handleSelectChange = (
-		event: React.ChangeEvent<HTMLSelectElement>
-	) => {
-		const selectedValue = event.target.value;
-		if (selectedValue === "opcao1") {
-			setQueroComprar(true);
-		} else {
-			setQueroComprar(false);
-		}
-	};
-
-	useEffect(() => {
-		if (!queroComprar) {
-			setTipo("CNPJ");
-		}
-		if (queroComprar) {
-			setTipo("CPF");
-		}
-	}, [queroComprar]);
-
 	return (
 		<>
 			<section className="w-full h-[250px] bg-seasalt flex justify-center items-center ">
@@ -167,7 +153,7 @@ function Cadastro() {
 									type="text"
 									id="cpf_cnpj"
 									name="cpf_cnpj"
-									placeholder={tipo}
+									placeholder={selected.textPlaceholder}
 									className="border border-darkMossGreen rounded-[10px] p-2 h-14"
 									value={usuario.cpf_cnpj}
 									onChange={(
@@ -205,41 +191,82 @@ function Cadastro() {
 								/>
 							</div>
 
-							<div className="flex flex-col w-full input-login">
-								{/* <label htmlFor="tipo">Tipo</label> */}
-								<input
-									type="text"
-									id="tipo"
+							<div className="flex flex-col w-full input-login ">
+								<Listbox
+									value={selected}
+									onChange={setSelected}
 									name="tipo"
-									placeholder="Tipo"
-									className="border border-darkMossGreen rounded-[10px] p-2 h-14"
-									value={usuario.tipo}
-									onChange={(
-										e: ChangeEvent<HTMLInputElement>
-									) => atualizarEstado(e)}
-								/>
-							</div>
-							<label htmlFor="tipoSelect">
-								<select
-									id="tipoSelect"
-									onChange={handleSelectChange}
-									className="appearance-auto textButton text-darkMossGreen border border-darkMossGreen rounded-[30px] p-3 h-14  w-44"
 								>
-									<option
-										value="opcao1"
-										className="textButton text-darkMossGreen"
-									>
-										Quero Comprar
-									</option>
-									<option
-										value="opcao2"
-										className="textButton text-darkMossGreen"
-									>
-										Quero vender
-									</option>
-									S
-								</select>
-							</label>
+									<div className="relative mt-1">
+										<Listbox.Button className="appearance-auto textButton text-darkMossGreen border border-darkMossGreen rounded-[30px] p-3 h-14  w-44">
+											<div className="flex justify-center">
+												{selected.type}
+												<CaretDown
+													size={10}
+													className="-mr-1 self-center text-darkMossGreen flex"
+													weight="bold"
+													aria-hidden="true"
+												/>
+											</div>
+										</Listbox.Button>
+										<Transition
+											as={Fragment}
+											leave="transition ease-in duration-100"
+											leaveFrom="opacity-100"
+											leaveTo="opacity-0"
+										>
+											<Listbox.Options className="absolute inset-x-0 z-10 mt-1 w-44 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-1">
+												{options.map(
+													(option, optionIdx) => (
+														<Listbox.Option
+															key={optionIdx}
+															className={({
+																active,
+															}) =>
+																`flex px-4 py-2 text-sm  bg-white text-darkMossGreen hover:bg-sunglow-light
+													rounded-md transition duration-300 ease-in-out${
+														active
+															? "bg-sunglow-light transition transition-300 ease-in-out text-darkMossGreen"
+															: "text-darkMossGreen"
+													}`
+															}
+															value={option}
+														>
+															{({ selected }) => (
+																<>
+																	<span
+																		className={`block truncate ${
+																			selected
+																				? "font-medium"
+																				: "font-normal"
+																		}`}
+																	>
+																		{
+																			option.type
+																		}
+																	</span>
+																	{selected ? (
+																		<span className="self-center left-0 flex pl-3 text-darkMossGreen">
+																			<CheckCircle
+																				size={
+																					18
+																				}
+																				className="-mr-1 self-center text-emerald"
+																				weight="bold"
+																				aria-hidden="true"
+																			/>
+																		</span>
+																	) : null}
+																</>
+															)}
+														</Listbox.Option>
+													)
+												)}
+											</Listbox.Options>
+										</Transition>
+									</div>
+								</Listbox>
+							</div>
 						</div>
 						<p className="paragraph ">
 							Já possui uma conta?
