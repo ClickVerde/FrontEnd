@@ -74,7 +74,6 @@ function Navbar() {
 							/>
 							<p className="px-2">Entrar</p>
 						</Link>
-						
 					</Menu.Item>
 				</div>
 			</Menu.Items>
@@ -131,7 +130,7 @@ function Navbar() {
 								leaveTo="transform opacity-0 scale-95"
 							>
 								<Menu.Items className="absolute inset-x-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-seasalt shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-									<div className="px-1 py-1">
+									<div className="p-1">
 										<Menu.Item>
 											<Link
 												to="/categorias/all"
