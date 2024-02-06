@@ -107,12 +107,6 @@ function Navbar() {
 						>
 							Produtos
 						</Link>
-						<Link
-							to="/perfil"
-							className="transition duration-300 ease-in-out hover:text-sunglow"
-						>
-							Perfil
-						</Link>
 						<Menu as="div" className="relative inline-block">
 							<div className="flex">
 								<Menu.Button className="transition duration-300 ease-in-out hover:text-sunglow inline-flex w-full">
