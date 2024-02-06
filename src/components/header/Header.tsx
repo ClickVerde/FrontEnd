@@ -113,7 +113,7 @@ function Navbar() {
 									Categorias
 									<CaretDown
 										size={10}
-										className="-mr-1 self-center text-darkMossGreen flex"
+										className="ms-1 self-center text-darkMossGreen flex"
 										weight="bold"
 										aria-hidden="true"
 									/>
@@ -192,7 +192,7 @@ function Navbar() {
 										</p>
 										<CaretDown
 											size={10}
-											className="-mr-1 self-center text-darkMossGreen"
+											className="ms-1 self-center text-darkMossGreen shrink-0"
 											weight="bold"
 											aria-hidden="true"
 										/>
