@@ -184,7 +184,7 @@ function Navbar() {
 								as="div"
 								className="relative inline-block text-darkMossGreen"
 							>
-								<div className="flex">
+								<div className="flex pr-2">
 									<Menu.Button className="transition duration-300 ease-in-out hover:text-sunglow inline-flex w-full">
 										<img src={User} className="w-10"></img>
 										<p className="flex headerBtn ps-2 pe-1 items-center self-center">
