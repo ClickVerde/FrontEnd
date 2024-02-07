@@ -7,7 +7,6 @@ import { toastAlerta } from "../../utils/toastAlerta";
 
 import ListaIConsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
 import Categoria from "../../models/Categorias";
-import Usuario from "../../models/Usuario";
 import { buscar } from "../../services/Service";
 
 function Perfil() {
@@ -25,7 +24,7 @@ function Perfil() {
 
   let navigate = useNavigate();
 
-  const { usuario, handleLogout } = useContext(AuthContext);
+  const { seuUsuario, usuario, handleLogout } = useContext(AuthContext);
 
   useEffect(() => {
     if (usuario.token === "") {
@@ -34,26 +33,17 @@ function Perfil() {
     }
   }, [usuario.token]);
 
-  const [seuUsuario, setSeuUsuario] = useState<Usuario>();
+  // Convertemos a data criada no Banco de Dados no formato Date, e armazenamos em uma variavel
+  let dataDoBanco = new Date(seuUsuario.data);
 
-  const token = usuario.token;
-  const idUsuarioLogin = usuario.id;
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        await buscar(`/usuarios/${idUsuarioLogin}`, setSeuUsuario, {
-          headers: { Authorization: token },
-        });
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          toastAlerta("O token expirou, favor logar novamente", "info");
-          handleLogout();
-        }
-      }
-    }
+  // Remover 3 horas da data devido ao Fuso Horário do Banco de Dados
+  dataDoBanco.setHours(dataDoBanco.getHours() - 3);
 
-    fetchData();
-  }, []);
+  // Formatamos a data
+  let dataLocal = new Intl.DateTimeFormat(undefined, {
+    dateStyle: "full",
+    timeStyle: "medium",
+  }).format(dataDoBanco);
 
   return (
     <>
@@ -82,16 +72,24 @@ function Perfil() {
           <div className="grid grid-flow-row m-4 border w-5/6 h-[400px] bg-[#F5F5F5] rounded-3xl justi">
             <div className="p-10 grid grid-cols-2 mt-12 w-5/6 gap-4 content-start justify-self-center rounded-3xl pt-[70px] font-bold border-2 text-[#525C60] bg-[#f1f1f1]">
               <div>
-                <p>Nome: {usuario.nome} </p>
+                <p>
+                  Nome: <p className="paragraph">{seuUsuario.nome} </p>
+                </p>
               </div>
               <div>
-                <p>Email: {usuario.email}</p>
+                <p>
+                  Email: <p className="paragraph">{seuUsuario.email}</p>
+                </p>
               </div>
               <div>
-                <p>CPF/CNPJ: {usuario.cpf_cnpj}</p>
+                <p>
+                  CPF/CNPJ: <p className="paragraph">{seuUsuario.cpf_cnpj}</p>
+                </p>
               </div>
               <div>
-                <p>Usuário desde:</p>
+                <p>
+                  Usuário desde: <p className="paragraph">{dataLocal}</p>
+                </p>
               </div>
             </div>
             <div className="flex justify-end items-end">

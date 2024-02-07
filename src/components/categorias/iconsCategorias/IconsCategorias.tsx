@@ -8,7 +8,7 @@ interface IconsCategoriasProps {
 
 function IconsCategorias({ categoria }: IconsCategoriasProps) {
   return (
-    <Link to={`/categorias/${categoria.id}`}>
+    <Link to={`/categorias/nome/${categoria.nome.toLocaleLowerCase()}`}>
       <div className="bg-white p-1 rounded-[20px] text-center flex-grow text-white w-[120px] h-[120px]   mx-2">
         <p className="text-darkMossGreen bold m-4 truncate text-[12px]">
           {categoria.nome}
