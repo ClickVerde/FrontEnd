@@ -9,9 +9,9 @@ interface IconsCategoriasAdmProps {
 function IconsCategoriasAdm({ categoria }: IconsCategoriasAdmProps) {
   return (
     <>
-      <div className="grid grid-rows">
+      <div className="grid grid-rows m-4 rounded-xl bg-seasalt transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-lg">
         <Link to={`/categorias/${categoria.id}`}>
-          <div className="bg-seasalt p-1 rounded-t-lg text-center flex-grow text-white w-[120px] h-[120px]   mx-2">
+          <div className="p-1 rounded-t-lg text-center flex-grow text-white w-[120px] h-[120px] mx-2">
             <p className="text-darkMossGreen bold m-4 truncate text-[12px]">
               {categoria.nome}
             </p>
@@ -24,16 +24,16 @@ function IconsCategoriasAdm({ categoria }: IconsCategoriasAdmProps) {
             </div>
           </div>
         </Link>
-        <div className="flex ml-2 w-[45px] h-[30px] self-center ">
+        <div className="flex w-[45px] h-[30px] self-center ">
           <Link
             to={`/editarCategoria/${categoria.id}`}
-            className=" w-[200px] p-2 rounded-bl-lg text-black hover:text-white bg-[#FFD242] flex items-center justify-center"
+            className=" w-[8rem] p-3 rounded-bl-lg text-black hover:text-white bg-[#FFD242] flex items-center justify-center"
           >
             <button>Editar</button>
           </Link>
           <Link
             to={`/deletarCategoria/${categoria.id}`}
-            className="w-[200px] p-2 rounded-br-lg text-white hover:text-white bg-[#FF5757] flex items-center justify-center"
+            className="w-[8rem] p-3 rounded-br-lg text-white hover:text-black bg-[#FF5757] flex items-center justify-center"
           >
             <button className="">Deletar</button>
           </Link>

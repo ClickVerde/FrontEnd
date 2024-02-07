@@ -60,7 +60,7 @@ function Login() {
             <img src={LoginImage} className='w-full h-full rounded-s-[30px]' />
           </div>
 
-          <form className=" col-span-2 flex flex-col gap-4 p-10 rounded-e-[30px]" onSubmit={login}>
+          <form className=" col-span-2 flex flex-col gap-4 p-10 rounded-e-[30px] " onSubmit={login}>
             <div className='w-full'>
               <h4 className="">Entrar</h4>
               <div className="flex flex-col w-full py-4 input-login">
@@ -94,7 +94,7 @@ function Login() {
                 Cadastre-se
               </Link>
             </p>
-            <button type ='submit' className="rounded-[10px] bg-darkMossGreen border border-darkMossGreen hover:bg-[#f7f7f7] hover:text-darkMossGreen text-white w-2/6 h-[60px] p-4 flex justify-center items-center">
+            <button type ='submit' className="rounded-[10px] bg-darkMossGreen border border-darkMossGreen text-white w-2/6 h-[60px] p-4 flex justify-center items-center transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300 shadow-lg">
               {isLoading ? <RotatingLines
                 strokeColor="white"
                 strokeWidth="5"
@@ -102,7 +102,7 @@ function Login() {
                 width="24"
                 visible={true}
               /> :
-                <span className='flex'>Entrar
+                <span className='flex '>Entrar
                   <img src={Arrow} className='w-4 ms-2' />
                 </span>}
             </button>

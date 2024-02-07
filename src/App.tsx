@@ -17,6 +17,7 @@ import Login from "./pages/login/Login";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BuscarProdutosCategoria from "./components/categorias/buscarProdutosCategoria/BuscarProdutosCategoria";
 import Perfil from "./pages/perfil/Perfil";
 
 function App() {
@@ -33,7 +34,11 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/home" element={<Home />} />
               <Route path="/categorias/all" element={<ListaCategoria />} />
-              <Route path="/abc/:id" element={<FormularioCategoria />} />
+              <Route path="/categorias/:id" element={<FormularioCategoria />} />
+              <Route
+                path="/categorias/nome/:nome"
+                element={<BuscarProdutosCategoria />}
+              />
               <Route
                 path="/cadastroCategoria"
                 element={<FormularioCategoria />}

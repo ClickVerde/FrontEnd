@@ -18,9 +18,9 @@ function ListaIConsCategorias() {
   }, [categorias.length]);
 
   return (
-    <div className="bg-darkMossGreen flex justify-center mb-5">
-      <div className="container flex flex-col items-center justify-center text-white">
-        <div className="mt-4">
+    <div className="bg-darkMossGreen flex justify-center mb-5 ">
+      <div className="container flex flex-col items-center justify-center text-white ">
+        <div className="mt-4 ">
           <h5 className="font-Roboto text-white mb-5">
             Conheça nossas categorias
           </h5>
