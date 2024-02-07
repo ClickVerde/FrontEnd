@@ -3,11 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { toastAlerta } from "../../utils/toastAlerta";
 import Row from "../../assets/icons/arrow_white.svg";
+import { Link } from 'react-router-dom';
+import Categoria from '../../models/Categorias';
 //import ModalPerfil from "../../components/perfil/modalPerfil/ModalPerfil";
 
-function Perfil() {
+interface CardCategoriaProps {
+	categoria: Categoria
+
+}
+
+function Perfil({ categoria }: CardCategoriaProps) {
 	let navigate = useNavigate();
 
+	console.log(categoria);
+	
 	const { usuario } = useContext(AuthContext);
 
 	useEffect(() => {
@@ -61,6 +70,14 @@ function Perfil() {
 									<img src={Row} className='w-4 ms-2' />
 								</span>
 							</button>
+						</div>
+						<div className="flex">
+							<Link to={`/editarCategoria/${categoria.id}`} className='w-full text-black hover:text-blue-600 flex items-center justify-center py-2'>
+								<button>Editar</button>
+							</Link>
+							<Link to={`/deletarCategoria/${categoria.id}`} className='text-black hover:text-red-600 w-full flex items-center justify-center'>
+								<button>Deletar</button>
+							</Link>
 						</div>
 					</div>
 				</div>
