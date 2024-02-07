@@ -1,22 +1,30 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { toastAlerta } from "../../utils/toastAlerta";
+import { buscar } from "../../services/Service";
 import Row from "../../assets/icons/arrow_white.svg";
 import { Link } from 'react-router-dom';
 import Categoria from '../../models/Categorias';
 //import ModalPerfil from "../../components/perfil/modalPerfil/ModalPerfil";
+import ListaIConsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
 
-interface CardCategoriaProps {
-	categoria: Categoria
+function Perfil() {
 
-}
+	const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-function Perfil({ categoria }: CardCategoriaProps) {
+	async function buscarCategorias() {
+		await buscar("/categorias/all", setCategorias, {
+			headers: {},
+		});
+	}
+
+	useEffect(() => {
+		buscarCategorias();
+	}, [categorias.length]);
+
 	let navigate = useNavigate();
 
-	console.log(categoria);
-	
 	const { usuario } = useContext(AuthContext);
 
 	useEffect(() => {
@@ -70,17 +78,11 @@ function Perfil({ categoria }: CardCategoriaProps) {
 									<img src={Row} className='w-4 ms-2' />
 								</span>
 							</button>
-						</div>
-						<div className="flex">
-							<Link to={`/editarCategoria/${categoria.id}`} className='w-full text-black hover:text-blue-600 flex items-center justify-center py-2'>
-								<button>Editar</button>
-							</Link>
-							<Link to={`/deletarCategoria/${categoria.id}`} className='text-black hover:text-red-600 w-full flex items-center justify-center'>
-								<button>Deletar</button>
-							</Link>
-						</div>
+						</div>	
 					</div>
 				</div>
+				<ListaIConsCategoriasAdm/>
+
 				<div>
 
 				</div>

@@ -12,17 +12,6 @@ function CardCategorias({categoria}: CardCategoriaProps) {
         <img className=' object-cover rounded-[30px]' src={categoria.foto} alt="" />
       </div>
       <h6 className='p-4 font-bold text-[#3E5622]'>{categoria.nome}</h6>
-
-      
-      <div className="flex">
-        <Link to={`/editarCategoria/${categoria.id}`} className='w-full text-black hover:text-blue-600 flex items-center justify-center py-2'>
-          <button>Editar</button>
-        </Link>
-        <Link to={`/deletarCategoria/${categoria.id}`} className='text-black hover:text-red-600 w-full flex items-center justify-center'>
-          <button>Deletar</button>
-        </Link>
-      </div>
-
     </div>
   )
 }
