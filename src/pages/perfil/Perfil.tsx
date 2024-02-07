@@ -79,8 +79,8 @@ function Perfil() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="grid grid-flow-row m-4 border w-[900px] w-4/6 h-[400px] bg-[#F5F5F5] rounded-3xl">
-            <div className="p-10 grid grid-cols-2 gap-4 content-end pt-[70px] font-bold text-[#525C60]">
+          <div className="grid grid-flow-row m-4 border w-5/6 h-[400px] bg-[#F5F5F5] rounded-3xl justi">
+            <div className="p-10 grid grid-cols-2 mt-12 w-5/6 gap-4 content-start justify-self-center rounded-3xl pt-[70px] font-bold border-2 text-[#525C60] bg-[#f1f1f1]">
               <div>
                 <p>Nome: {usuario.nome} </p>
               </div>
@@ -97,7 +97,7 @@ function Perfil() {
             <div className="flex justify-end items-end">
               <button
                 type="submit"
-                className="mt-4 rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen m-5  h-[60px] p-4 flex justify-center items-center"
+                className="mt-4 rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen m-5  h-[60px] p-4 flex justify-center items-center transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300 shadow-lg"
               >
                 <span className="flex m-10">
                   Editar!
