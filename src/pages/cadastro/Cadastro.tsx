@@ -120,6 +120,8 @@ function Cadastro() {
     }
   }
 
+  console.log(usuario);
+
   return (
     <>
       <section className="w-full h-[250px] bg-seasalt flex justify-center items-center ">
@@ -185,8 +187,21 @@ function Cadastro() {
                     atualizarEstado(e)
                   }
                 />
+              </div>{" "}
+              <div className="flex flex-col w-full input-login">
+                {/* <label htmlFor="cpf_cnpj">CPF/CNPJ</label> */}
+                <input
+                  type="text"
+                  id="foto"
+                  name="foto"
+                  placeholder="Foto (URL)"
+                  className="border border-darkMossGreen rounded-[10px] p-2 h-14"
+                  value={usuario.foto}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    atualizarEstado(e)
+                  }
+                />
               </div>
-
               <div className="flex flex-col w-full input-login">
                 {/* <label htmlFor="senha">Senha</label> */}
                 <input
@@ -215,7 +230,6 @@ function Cadastro() {
                   }
                 />
               </div>
-
               <div className="flex flex-col w-full input-login ">
                 <Listbox value={selected} onChange={setSelected} name="tipo">
                   <div className="relative mt-1">
