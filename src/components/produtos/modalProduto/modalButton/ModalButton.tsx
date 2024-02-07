@@ -38,7 +38,7 @@ export function ModalButtonAlter({ id }: ModalAlterarProdutosProps) {
         trigger={
           <button
             type="submit"
-            className="mt-4 rounded-[7px]  bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center "
+            className="mt-4 rounded-[7px]  bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300 shadow-lg"
           >
             <p className="textButton">Alterar</p>
           </button>
@@ -60,7 +60,7 @@ export function ModalButtonDelete() {
         trigger={
           <button
             type="submit"
-            className="mt-4 rounded-[7px]  bg-[#FF5757] border border-[#FF5757] hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center"
+            className="mt-4 rounded-[7px]  bg-[#FF5757] border border-[#FF5757] hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center "
           >
             <p className="textButton text-white">Deletar</p>
           </button>

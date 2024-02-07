@@ -70,7 +70,7 @@ function Navbar() {
           </Menu.Item>
           <Menu.Item>
             <Link
-              to=""
+              to="/login"
               onClick={logout}
               className="flex px-4 py-2 text-sm  bg-seasalt text-darkMossGreen hover:bg-sunglow-light
 													rounded-md transition duration-300 ease-in-out"
