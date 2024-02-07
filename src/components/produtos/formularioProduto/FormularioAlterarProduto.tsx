@@ -44,7 +44,7 @@ function FormularioAlterarProduto({ id }: FormularioAlterarProdutoProps) {
   });
 
   async function buscarProdutoPorId(id: string) {
-    await buscar(`/produtos/14`, setProduto, {
+    await buscar(`/produtos/${id}`, setProduto, {
       headers: {
         Authorization: token,
       },

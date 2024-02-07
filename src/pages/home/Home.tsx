@@ -19,7 +19,7 @@ function Home() {
               <h3>Faça a melhor escolha de produtos eco-friendly</h3>
               <button
                 type="submit"
-                className="mt-4rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen w-2/6 h-[60px] p-4 flex justify-center items-center"
+                className="mt-4 rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen w-2/6 h-[60px] p-4 flex justify-center items-center"
               >
                 <span className="flex">
                   Ver agora!

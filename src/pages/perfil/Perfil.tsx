@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Row from "../../assets/icons/arrow_white.svg";
+import Arrow from "../../assets/icons/arrow_green.svg";
 import ListaProdutoLoja from "../../components/produtos/listaProduto/ListaProdutoLoja";
 import { AuthContext } from "../../contexts/AuthContext";
 import { toastAlerta } from "../../utils/toastAlerta";
@@ -95,10 +95,13 @@ function Perfil() {
               </div>
             </div>
             <div className="flex justify-end items-end">
-              <button className="rounded-[10px] bg-sunglow hover:bg-[#FFE499] hover:text-[#3e56227a] text-darkMossGreen font-bold w-1/6 h-[60px] p-4 m-6 transition duration-300 ease-in-out">
-                <span className="flex ml-4">
-                  Editar
-                  <img src={Row} className="w-4 ms-2" />
+              <button
+                type="submit"
+                className="mt-4 rounded-[10px] bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen m-5  h-[60px] p-4 flex justify-center items-center"
+              >
+                <span className="flex m-10">
+                  Editar!
+                  <img src={Arrow} className="w-4 ms-2 " />
                 </span>
               </button>
             </div>
