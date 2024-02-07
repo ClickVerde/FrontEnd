@@ -1,10 +1,12 @@
 import coracao from "../../../assets/icons/heart.svg";
 import Produto from "../../../models/Produtos";
-interface CardProdutoProps {
+import ModalProduto from "../modalProduto/ModalProduto";
+
+interface CardProdutoLojaProps {
   prod: Produto;
 }
 
-function CardProduto({ prod }: CardProdutoProps) {
+function CardProdutoLoja({ prod }: CardProdutoLojaProps) {
   return (
     <>
       <div className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2">
@@ -35,26 +37,19 @@ function CardProduto({ prod }: CardProdutoProps) {
               {prod.likes}
             </p>
           </div>
+
+          <ModalProduto type={2} id={prod.id} />
+
+          <button
+            type="submit"
+            className="mt-4 rounded-[7px]  bg-[#FF5757] border border-[#FF5757] hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center"
+          >
+            <p className="textButton text-white">Deletar</p>
+          </button>
         </div>
       </div>
     </>
   );
-
-  /* <p>{prod.descricao}</p>
-    <p>Categoria: {prod.categoria?.descricao}</p>
-    <p>Data: {new Intl.DateTimeFormat(undefined, {
-      dateStyle: 'full',
-      timeStyle: 'medium',
-    }).format(new Date(prod.data))}</p> */
-
-  /* <div className="flex">
-        <Link to={`/editarProduto/${prod.id}`} className='w-full text-white bg-indigo-400 hover:bg-indigo-800 flex items-center justify-center py-2'>
-          <button>Editar</button>
-        </Link>
-        <Link to={`/deletarProduto/${prod.id}`} className='text-white bg-red-400 hover:bg-red-700 w-full flex items-center justify-center'>
-          <button>Deletar</button>
-        </Link>
-      </div> */
 }
 
-export default CardProduto;
+export default CardProdutoLoja;

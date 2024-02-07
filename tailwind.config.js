@@ -13,7 +13,7 @@ export const theme = {
         DEFAULT: '#FFD242'
       },
       'davysGray': '#525C60',
-      'seasalt': '#FAFAFA',
+      'seasalt': '#f9f8f8',
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'], // Escrever font-roboto para usar
