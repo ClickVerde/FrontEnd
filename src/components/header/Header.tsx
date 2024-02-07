@@ -40,6 +40,15 @@ function Navbar() {
     buscarCategorias();
   }, [categorias.length]);
 
+  const [termoPesquisa, setTermoPesquisa] = useState("");
+
+  const handlePesquisa = () => {
+    if (termoPesquisa) {
+      // Navegue para a rota de pesquisa incluindo o termo como parte da URL
+      navigate(`/produtos/nomes/${termoPesquisa}`);
+    }
+  };
+
   let userDropDown;
 
   if (usuario.token !== "") {
@@ -170,9 +179,14 @@ function Navbar() {
               type="text"
               placeholder="Pesquisar"
               name="descricao"
+              value={termoPesquisa}
+              onChange={(e) => setTermoPesquisa(e.target.value)}
               className="w-[16vw] h-[10px] border-none rounded-full p-2 self-center input-pesquisa"
             />
-            <button className="group bg-emerald rounded-full w-7 h-7 flex justify-center	">
+            <button
+              onClick={handlePesquisa}
+              className="group bg-emerald rounded-full w-7 h-7 flex justify-center"
+            >
               <img className="w-4 self-center" src={SearchIcon} alt="" />
             </button>
           </div>

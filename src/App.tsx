@@ -6,6 +6,7 @@ import FormularioCategoria from "./components/categorias/formularioCategoria/For
 import ListaCategoria from "./components/categorias/listaCategoria/ListaCategoria";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Header";
+import BuscarProdutos from "./components/produtos/buscarProdutos/BuscarProdutos";
 import DeletarProduto from "./components/produtos/deletarProduto/DeletarProduto";
 import FormularioProduto from "./components/produtos/formularioProduto/FormularioCadastroProduto";
 import ListaProduto from "./components/produtos/listaProduto/ListaProduto";
@@ -47,6 +48,10 @@ function App() {
                 element={<DeletarCategoria />}
               />
               <Route path="/produtos/all" element={<ListaProduto />} />
+              <Route
+                path="/produtos/nomes/:nome"
+                element={<BuscarProdutos />}
+              />
               <Route path="/cadastroProduto" element={<FormularioProduto />} />
               <Route
                 path="/editarProduto/:id"

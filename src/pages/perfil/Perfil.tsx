@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Row from "../../assets/icons/arrow_white.svg";
 import ListaProdutoLoja from "../../components/produtos/listaProduto/ListaProdutoLoja";
 import { AuthContext } from "../../contexts/AuthContext";
-import Categoria from "../../models/Categorias";
-import { buscar } from "../../services/Service";
 import { toastAlerta } from "../../utils/toastAlerta";
-//import ModalPerfil from "../../components/perfil/modalPerfil/ModalPerfil";
+
 import ListaIConsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
+import Categoria from "../../models/Categorias";
 import Usuario from "../../models/Usuario";
+import { buscar } from "../../services/Service";
 
 function Perfil() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -104,7 +104,10 @@ function Perfil() {
             </div>
           </div>
         </div>
-        <ListaIConsCategoriasAdm />
+
+        {seuUsuario?.tipo?.toLowerCase() === "adm" && (
+          <ListaIConsCategoriasAdm />
+        )}
 
         <section className="w-ful flex justify-center items-center mt-[50px]  mb-[40px] ">
           <div className="flex gap-4 ">
