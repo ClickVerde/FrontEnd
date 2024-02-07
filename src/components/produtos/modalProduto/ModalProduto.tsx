@@ -1,27 +1,41 @@
-import FormularioProduto from '../formularioProduto/FormularioProduto';
+import "reactjs-popup/dist/index.css";
+import "./ModalProduto.css";
+import {
+  ModalButtonAlter,
+  ModalButtonCreate,
+  ModalButtonDelete,
+} from "./modalButton/ModalButton";
+interface ModalProdutoProps {
+  type: number;
+  id: number;
+}
 
-import 'reactjs-popup/dist/index.css';
-import Popup from 'reactjs-popup'; //instalar dependência
+function ModalProduto(props: ModalProdutoProps) {
+  // Componente do botão para o tipo 1
 
-import './ModalProduto.css'
-
-function ModalProduto() {
-    return (
+  switch (props.type) {
+    case 1:
+      return (
         <>
-            <Popup trigger={ 
-                    <button className='border rounded px-4 hover:bg-white hover:text-indigo-800'>
-                        Novo Produto
-                    </button>
-                } modal>
-                <div>
-                    {
-
-                    }
-                    <FormularioProduto />
-                </div>
-            </Popup>
+          <ModalButtonCreate></ModalButtonCreate>
         </>
-    );
+      );
+      break;
+    case 2:
+      return (
+        <>
+          <ModalButtonAlter id={props.id}></ModalButtonAlter>
+        </>
+      );
+      break;
+    case 3:
+      return (
+        <>
+          <ModalButtonDelete></ModalButtonDelete>
+        </>
+      );
+      break;
+  }
 }
 
 export default ModalProduto;

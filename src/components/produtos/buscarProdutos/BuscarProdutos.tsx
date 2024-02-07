@@ -1,19 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import { LineWave } from "react-loader-spinner";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Produto from "../../../models/Produtos";
 import { buscar } from "../../../services/Service";
 import { toastAlerta } from "../../../utils/toastAlerta";
 import CardProduto from "../cardProduto/CardProduto";
 
-function ListaProduto() {
+function BuscarProdutos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const { handleLogout } = useContext(AuthContext);
+
+  const { nome } = useParams<{ nome: string }>();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        await buscar("/produtos/all", setProdutos, {});
+        await buscar(`/produtos/nomes/${nome}`, setProdutos, {});
       } catch (error: any) {
         if (error.toString().includes("403")) {
           toastAlerta("O token expirou, favor logar novamente", "info");
@@ -46,4 +49,4 @@ function ListaProduto() {
   );
 }
 
-export default ListaProduto;
+export default BuscarProdutos;

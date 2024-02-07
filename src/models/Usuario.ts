@@ -8,5 +8,6 @@ export default interface Usuario {
   foto: string;
   cpf_cnpj: string;
   tipo: string;
+  data: string;
   produtos?: Produtos | null;
 }
