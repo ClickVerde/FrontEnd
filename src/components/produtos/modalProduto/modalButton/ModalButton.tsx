@@ -38,7 +38,7 @@ export function ModalButtonAlter({ id }: ModalAlterarProdutosProps) {
         trigger={
           <button
             type="submit"
-            className="mt-4 rounded-[7px]  bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center"
+            className="mt-4 rounded-[7px]  bg-sunglow border border-sunglow hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center "
           >
             <p className="textButton">Alterar</p>
           </button>

@@ -7,7 +7,6 @@ import { toastAlerta } from "../../utils/toastAlerta";
 
 import ListaIConsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
 import Categoria from "../../models/Categorias";
-import Usuario from "../../models/Usuario";
 import { buscar } from "../../services/Service";
 
 function Perfil() {
@@ -25,7 +24,7 @@ function Perfil() {
 
   let navigate = useNavigate();
 
-  const { usuario, handleLogout } = useContext(AuthContext);
+  const { seuUsuario, usuario, handleLogout } = useContext(AuthContext);
 
   useEffect(() => {
     if (usuario.token === "") {
@@ -34,38 +33,7 @@ function Perfil() {
     }
   }, [usuario.token]);
 
-  const [seuUsuario, setSeuUsuario] = useState<Usuario>();
-
-  const token = usuario.token;
-  const idUsuarioLogin = usuario.id;
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        await buscar(`/usuarios/${idUsuarioLogin}`, setSeuUsuario, {
-          headers: { Authorization: token },
-        });
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          toastAlerta("O token expirou, favor logar novamente", "info");
-          handleLogout();
-        }
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  // Convertemos a data criada no Banco de Dados no formato Date, e armazenamos em uma variavel
-  let dataDoBanco = new Date(seuUsuario.data);
-
-  // Remover 3 horas da data devido ao Fuso Horário do Banco de Dados
-  dataDoBanco.setHours(dataDoBanco.getHours() - 3);
-
-  // Formatamos a data
-  let dataLocal = new Intl.DateTimeFormat(undefined, {
-    dateStyle: "full",
-    timeStyle: "medium",
-  }).format(dataDoBanco);
+  console.log(seuUsuario);
 
   return (
     <>
@@ -103,7 +71,7 @@ function Perfil() {
                 <p>CPF/CNPJ: {seuUsuario.cpf_cnpj}</p>
               </div>
               <div>
-                <p>Usuário desde: {dataLocal}</p>
+                <p>Usuário desde:</p>
               </div>
             </div>
             <div className="flex justify-end items-end">

@@ -1,14 +1,15 @@
-import { createContext, ReactNode, useState } from "react";
-
+import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
+import Usuario from "../models/Usuario";
 import UsuarioLogin from "../models/UsuarioLogin";
-import { login } from "../services/Service";
+import { buscar, login } from "../services/Service";
 import { toastAlerta } from "../utils/toastAlerta";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;
   handleLogout(): void;
-  handleLogin(usuario: UsuarioLogin): Promise<void>;
+  handleLogin(usuarioLogin: UsuarioLogin): Promise<void>;
   isLoading: boolean;
+  seuUsuario: Usuario; // Adicionando seuUsuario ao tipo AuthContextProps
 }
 
 interface AuthProviderProps {
@@ -32,10 +33,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleLogin(userLogin: UsuarioLogin) {
+  async function handleLogin(usuarioLogin: UsuarioLogin) {
     setIsLoading(true);
     try {
-      await login(`/usuarios/logar`, userLogin, setUsuario);
+      await login(`/usuarios/logar`, usuarioLogin, setUsuario);
       toastAlerta("Usuário logado com sucesso", "sucesso");
       setIsLoading(false);
     } catch (error) {
@@ -59,11 +60,44 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }
 
+  const [seuUsuario, setSeuUsuario] = useState<Usuario>({
+    id: 0,
+    nome: "",
+    email: "",
+    senha: "",
+    foto: "",
+    cpf_cnpj: "",
+    tipo: "",
+    data: "",
+    produtos: null,
+  });
+
+  const token = usuario.token;
+  const idUsuarioLogin = usuario.id;
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        await buscar(`/usuarios/${idUsuarioLogin}`, setSeuUsuario, {
+          headers: { Authorization: token },
+        });
+      } catch (error: any) {
+        if (error.toString().includes("403")) {
+          toastAlerta("O token expirou, favor logar novamente", "info");
+          handleLogout();
+        }
+      }
+    }
+
+    fetchData();
+  }, [idUsuarioLogin, token]);
+
+  // Utilizando useMemo para memoizar o contexto
+  const contextValue = useMemo(() => {
+    return { usuario, handleLogin, handleLogout, isLoading, seuUsuario };
+  }, [usuario, handleLogin, handleLogout, isLoading, seuUsuario]);
+
   return (
-    <AuthContext.Provider
-      value={{ usuario, handleLogin, handleLogout, isLoading }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 }
