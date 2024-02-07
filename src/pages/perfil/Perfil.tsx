@@ -55,6 +55,18 @@ function Perfil() {
     fetchData();
   }, []);
 
+  // Convertemos a data criada no Banco de Dados no formato Date, e armazenamos em uma variavel
+  let dataDoBanco = new Date(seuUsuario.data);
+
+  // Remover 3 horas da data devido ao Fuso Horário do Banco de Dados
+  dataDoBanco.setHours(dataDoBanco.getHours() - 3);
+
+  // Formatamos a data
+  let dataLocal = new Intl.DateTimeFormat(undefined, {
+    dateStyle: "full",
+    timeStyle: "medium",
+  }).format(dataDoBanco);
+
   return (
     <>
       <div className="mx-auto my-4 overflow-hidden flex flex-col">
@@ -82,16 +94,16 @@ function Perfil() {
           <div className="grid grid-flow-row m-4 border w-[900px] w-4/6 h-[400px] bg-[#F5F5F5] rounded-3xl">
             <div className="p-10 grid grid-cols-2 gap-4 content-end pt-[70px] font-bold text-[#525C60]">
               <div>
-                <p>Nome: {usuario.nome} </p>
+                <p>Nome: {seuUsuario.nome} </p>
               </div>
               <div>
-                <p>Email: {usuario.email}</p>
+                <p>Email: {seuUsuario.email}</p>
               </div>
               <div>
-                <p>CPF/CNPJ: {usuario.cpf_cnpj}</p>
+                <p>CPF/CNPJ: {seuUsuario.cpf_cnpj}</p>
               </div>
               <div>
-                <p>Usuário desde:</p>
+                <p>Usuário desde: {dataLocal}</p>
               </div>
             </div>
             <div className="flex justify-end items-end">
