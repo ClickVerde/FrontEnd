@@ -9,7 +9,7 @@ interface CardProdutoLojaProps {
 function CardProdutoLoja({ prod }: CardProdutoLojaProps) {
   return (
     <>
-      <div className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2">
+      <button className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2 transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-lg">
         <div>
           <div className="bg-[#3E5622] w-min p-1 px-2 h-min rounded-md text-center my-4">
             <p className="text-white fontCategoriaProdutoCard w-max font-bold capitalize ">
@@ -40,14 +40,9 @@ function CardProdutoLoja({ prod }: CardProdutoLojaProps) {
 
           <ModalProduto type={2} id={prod.id} />
 
-          <button
-            type="submit"
-            className="mt-4 rounded-[7px]  bg-[#FF5757] border border-[#FF5757] hover:bg-[#f7f7f7]text-darkMossGreen textButton  text-darkMossGreen h-[40px] p-4 flex justify-center items-center transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300 shadow-lg"
-          >
-            <p className="textButton text-white">Deletar</p>
-          </button>
+          <ModalProduto type={3} id={prod.id} />
         </div>
-      </div>
+      </button>
     </>
   );
 }

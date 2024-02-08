@@ -28,7 +28,7 @@ function BuscarProdutosCategoria() {
     console.log(categoria[0]);
 
     fetchData();
-  }, []);
+  }, [nome]);
 
   return (
     <>

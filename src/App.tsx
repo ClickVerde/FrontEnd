@@ -7,7 +7,6 @@ import ListaCategoria from "./components/categorias/listaCategoria/ListaCategori
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Header";
 import BuscarProdutos from "./components/produtos/buscarProdutos/BuscarProdutos";
-import DeletarProduto from "./components/produtos/deletarProduto/DeletarProduto";
 import FormularioProduto from "./components/produtos/formularioProduto/FormularioCadastroProduto";
 import ListaProduto from "./components/produtos/listaProduto/ListaProduto";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -62,7 +61,6 @@ function App() {
                 path="/editarProduto/:id"
                 element={<FormularioProduto />}
               />
-              <Route path="/deletarProduto/:id" element={<DeletarProduto />} />
               <Route path="/perfil" element={<Perfil />} />
             </Routes>
           </div>
