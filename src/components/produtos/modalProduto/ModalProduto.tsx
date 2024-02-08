@@ -31,7 +31,7 @@ function ModalProduto(props: ModalProdutoProps) {
     case 3:
       return (
         <>
-          <ModalButtonDelete></ModalButtonDelete>
+          <ModalButtonDelete id={props.id}></ModalButtonDelete>
         </>
       );
       break;

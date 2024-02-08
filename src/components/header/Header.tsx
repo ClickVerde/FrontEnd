@@ -110,9 +110,9 @@ function Navbar() {
   return (
     <>
       <header className="w-full bg-white text-white flex justify-between align-middle py-[1rem] px-[4rem] ">
-        <div>
+        <Link to="/home">
           <img src={Logo} className="xl:w-20 sm:w-20"></img>
-        </div>
+        </Link>
 
         <section className="flex justify-between gap-6">
           <div className="text-darkMossGreen p-4 grid gap-10 grid-flow-col items-center font-bold text-[16px] ]">

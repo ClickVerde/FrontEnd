@@ -154,14 +154,14 @@ function FormularioAlterarProduto({ id }: FormularioAlterarProdutoProps) {
   const carregandoCategoria = categoria.descricao === "";
 
   return (
-    <div className="container flex flex-col mx-auto items-center">
+    <div className=" flex flex-col items-center">
       <h1 className="text-4xl text-center my-8">
         {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
       </h1>
 
       <form
         onSubmit={gerarNovoProduto}
-        className="flex flex-col w-1/2 gap-4 input-login"
+        className="flex flex-col w-[600px]  m-4 gap-4 input-login"
       >
         <div className="flex flex-col gap-2">
           <label htmlFor="nome">Nome do Produto</label>
