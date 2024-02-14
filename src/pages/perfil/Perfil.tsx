@@ -59,8 +59,8 @@ function Perfil() {
       timeStyle: "medium",
     }).format(dataDoBanco);
   }
-  console.log(usuario);
 
+  console.log(seuUsuario);
   return (
     <>
       <div className="mx-auto my-4 overflow-hidden flex flex-col">
@@ -94,7 +94,7 @@ function Perfil() {
                 <p>Email: {usuario.email}</p>
               </div>
               <div>
-                <p>CPF/CNPJ: {seuUsuario.cpf_cnpj}</p>
+                {seuUsuario != null && <p>CPF/CNPJ: {seuUsuario.cpf_cnpj}</p>}
               </div>
               <div>{dataLocal && <p>Usuario desde: {dataLocal}</p>}</div>
             </div>
