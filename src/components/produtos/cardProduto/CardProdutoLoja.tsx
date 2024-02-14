@@ -9,7 +9,7 @@ interface CardProdutoLojaProps {
 function CardProdutoLoja({ prod }: CardProdutoLojaProps) {
   return (
     <>
-      <button className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2 transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-lg">
+      <button className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2 transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-md">
         <div>
           <div className="bg-[#3E5622] w-min p-1 px-2 h-min rounded-md text-center my-4">
             <p className="text-white fontCategoriaProdutoCard w-max font-bold capitalize ">
