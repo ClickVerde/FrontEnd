@@ -42,13 +42,13 @@ function Home() {
         <section className="flex justify-center mt-[70px]">
           <div className="justify-around items-center grid grid-cols-2 gap-6 container w-[900px]">
             <Link
-              to="produtos/all"
+              to="/produtos/all"
               className=" bg-darkMossGreen rounded-2xl  flex justify-center items-center h-[200px] transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300"
             >
               <h5 className="text-white">Produtos</h5>
             </Link>
             <Link
-              to="categorias/all"
+              to="/categorias/all"
               className=" bg-darkMossGreen rounded-2xl flex justify-center items-center	h-[200px] transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300"
             >
               <h5 className="text-white">Categorias</h5>
