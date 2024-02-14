@@ -59,12 +59,13 @@ function Perfil() {
       timeStyle: "medium",
     }).format(dataDoBanco);
   }
+  console.log(usuario);
 
   return (
     <>
       <div className="mx-auto my-4 overflow-hidden flex flex-col">
         <section className="justify-center">
-          <div className="h-[300px] bg-[#F5F5F5] flex justify-center items-center">
+          <div className="h-[300px] bg-seasalt flex justify-center items-center">
             <h3 className=" font-roboto">Bem Vindo ao seu Perfil</h3>
           </div>
         </section>
@@ -84,7 +85,7 @@ function Perfil() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="grid grid-flow-row m-4 border w-[900px] w-4/6 h-[400px] bg-[#F5F5F5] rounded-3xl">
+          <div className="grid grid-flow-row m-4 w-[900px] w-4/6 h-[400px] bg-seasalt rounded-3xl">
             <div className="p-10 grid grid-cols-2 gap-4 content-end pt-[70px] font-bold text-[#525C60]">
               <div>
                 <p>Nome: {usuario.nome} </p>
@@ -93,12 +94,12 @@ function Perfil() {
                 <p>Email: {usuario.email}</p>
               </div>
               <div>
-                <p>CPF/CNPJ: {usuario.cpf_cnpj}</p>
+                <p>CPF/CNPJ: {seuUsuario.cpf_cnpj}</p>
               </div>
               <div>{dataLocal && <p>Usuario desde: {dataLocal}</p>}</div>
             </div>
             <div className="flex justify-end items-end">
-              <button className="rounded-[10px] bg-sunglow hover:bg-[#FFE499] hover:text-[#3e56227a] text-darkMossGreen font-bold w-1/6 h-[60px] p-4 m-6 transition duration-300 ease-in-out">
+              <button className="rounded-[10px] bg-sunglow text-darkMossGreen font-bold w-1/6 h-[60px] p-4 m-6 transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-110 duration-300 shadow-lg">
                 <span className="flex ml-4">
                   Editar
                   <img src={Row} className="w-4 ms-2" />

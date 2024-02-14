@@ -108,7 +108,7 @@ function DeletarProduto({ id }: DeletarProdutoProps) {
                 visible={true}
               />
             ) : (
-              <span className="text-darkMossGreen textButton">Sim</span>
+              <span className="text-white textButton">Sim</span>
             )}
           </button>
         </div>
