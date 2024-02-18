@@ -21,7 +21,7 @@ function ListaProdutoLoja(props: CardProdutoProps) {
           wrapperClass=""
         />
       )}
-      <div className="w-[900px] mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center ">
+      <div className="max-w-[900px] mx-auto my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center ">
         <ModalProduto type={1} id={null} />
 
         {Array.isArray(props.usuario?.produtos) ? (

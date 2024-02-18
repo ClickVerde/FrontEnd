@@ -37,15 +37,17 @@ function ListaProduto() {
           wrapperClass=""
         />
       )}
-      <div className="w-[900px] mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center ">
-        {produtos.map((produto) => (
-          <CardProduto
-            key={produto.id}
-            prod={produto}
-            categoria={produto.categoria.nome}
-          />
-        ))}
-      </div>
+      <section className="flex justify-center">
+        <div className="max-w-[900px] my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6 justify-items-center ">
+          {produtos.map((produto) => (
+            <CardProduto
+              key={produto.id}
+              prod={produto}
+              categoria={produto.categoria.nome}
+            />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

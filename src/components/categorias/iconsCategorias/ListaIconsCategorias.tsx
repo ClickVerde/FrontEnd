@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import "../../../index.css";
 import Categoria from "../../../models/Categorias";
 import { buscar } from "../../../services/Service";
@@ -17,22 +18,32 @@ function ListaIConsCategorias() {
     buscarCategorias();
   }, [categorias.length]);
 
+  const { isTab, isMobile } = useWindowDimensions();
+
   return (
-    <div className="bg-darkMossGreen flex justify-center mb-5 ">
-      <div className="container flex flex-col items-center justify-center text-white ">
-        <div className="mt-4 ">
-          <h5 className="font-Roboto text-white mb-5">
-            Conheça nossas categorias
-          </h5>
+    <div className="bg-darkMossGreen flex flex-col align-middle justify-center mb-5 p-4 ">
+      <h5 className="font-Roboto text-white mb-5 self-center ">
+        Conheça nossas categorias
+      </h5>
+
+      {isTab && (
+        <div className="flex justify-center">
+          <div className=" text-white overflow-x-scroll p-5">
+            <div className="w-full flex whitespace-nowrap  ">
+              {categorias.map((categoria) => (
+                <IconsCategorias key={categoria.id} categoria={categoria} />
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="px-1 py-1 flex ">
+      )}
+      {!isTab && (
+        <div className="px-1 py-1 flex self-center ">
           {categorias.map((categoria) => (
             <IconsCategorias key={categoria.id} categoria={categoria} />
           ))}
         </div>
-        <div className="mb-4"></div>
-        <div className="flex justify-center gap-5 mb-9"></div>
-      </div>
+      )}
     </div>
   );
 }

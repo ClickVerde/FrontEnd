@@ -8,7 +8,7 @@ interface CardProdutoProps {
 function CardProduto(props: CardProdutoProps) {
   return (
     <>
-      <button className="grid grid-row-3 gap-4  rounded-[15px] bg-seasalt px-3 py-2 transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-md">
+      <button className="grid grid-row-3 gap-4  rounded-[6px] bg-seasalt px-3 py-2 transition ease-in-out delay-50 hover:-translate-y-4 hover:scale-110 duration-300 shadow-md">
         <div>
           <div className="bg-[#3E5622] w-min p-1 px-2 h-min rounded-md text-center my-4">
             <p className="text-white fontCategoriaProdutoCard w-max font-bold capitalize ">
@@ -23,7 +23,7 @@ function CardProduto(props: CardProdutoProps) {
         </div>
 
         <div className="grid gap-1">
-          <p className=" fontProdutoNameCard text-[16px] text-darkMossGreen capitalize my-1">
+          <p className="text-left fontProdutoNameCard text-[16px] text-darkMossGreen capitalize my-1">
             {props.prod.nome}
           </p>
           <div className="">
