@@ -1,40 +1,42 @@
 import { useEffect, useState } from "react";
 import "../../../index.css";
 import Categoria from "../../../models/Categorias";
-import { buscar } from "../../../services/Service";
-import IconsCategoriasAdm from "./IconsCategoriasAdm";
+import CardCategoria from "../cardCategoria/CardCategoria";
+import ModalCategoria from "../modalCategoria/ModalCategoria"
 
-function ListaIConsCategoriasAdm() {
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
+interface CardCategoriaProps {
+  categorias: Categoria[];
+}
 
-  async function buscarCategorias() {
-    await buscar("/categorias/all", setCategorias, {
-      headers: {},
-    });
-  }
-
-  useEffect(() => {
-    buscarCategorias();
-  }, [categorias.length]);
+function ListaIconsCategoriasAdm(props: CardCategoriaProps) {
 
   return (
-    <div className=" flex justify-center mb-5">
-      <div className="container flex flex-col items-center justify-center text-white">
-        <div className="mt-4">
-          <h5 className="font-Roboto text-darkMossGreen mb-5">
-            Categorias
-          </h5>
+    <>
+
+      <div className=" flex justify-center mb-5">
+        <div className="container flex flex-col items-center justify-center text-white">
+          <div className="mt-4">
+            <h5 className="font-Roboto text-darkMossGreen mb-5">
+              Categorias
+            </h5>
+          </div>
+          <div className="w-[900px] mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center ">
+            <ModalCategoria type={1} id={null} />
+
+            {Array.isArray(props.categorias) && props.categorias.length > 0 ? (
+              props.categorias.map((categoria) => (
+                <CardCategoria key={categoria.id} categoria={categoria} />
+              ))
+            ) : (
+              <p className="text-black">Nenhum produto encontrado.</p>
+            )}
+          </div>
+          <div className="mb-4"></div>
+          <div className="flex justify-center gap-5 mb-9"></div>
         </div>
-        <div className="px-1 py-1 flex ">
-          {categorias.map((categoria) => (
-            <IconsCategoriasAdm key={categoria.id} categoria={categoria} />
-          ))}
-        </div>
-        <div className="mb-4"></div>
-        <div className="flex justify-center gap-5 mb-9"></div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default ListaIConsCategoriasAdm;
+export default ListaIconsCategoriasAdm;

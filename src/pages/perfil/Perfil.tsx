@@ -6,9 +6,10 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { toastAlerta } from "../../utils/toastAlerta";
 //import ModalPerfil from "../../components/perfil/modalPerfil/ModalPerfil";
 import { useState } from "react";
-import ListaIConsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
+import ListaIconsCategoriasAdm from "../../components/categorias/iconsCategorias/ListaIconsCategoriasAdm";
 import Usuario from "../../models/Usuario";
 import { buscar } from "../../services/Service";
+import Categoria from "../../models/Categorias";
 
 function Perfil() {
   let navigate = useNavigate();
@@ -23,6 +24,8 @@ function Perfil() {
   }, [usuario.token]);
 
   const [seuUsuario, setSeuUsuario] = useState<Usuario>();
+
+  const [suaCategoria, setSuaCategoria] = useState<Categoria[]>();
 
   const token = usuario.token;
   const idUsuarioLogin = usuario.id;
@@ -85,7 +88,7 @@ function Perfil() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="grid grid-flow-row m-4 w-[900px] w-4/6 h-[400px] bg-seasalt rounded-3xl">
+          <div className="grid grid-flow-row m-4 w-4/6 h-[400px] bg-seasalt rounded-3xl">
             <div className="p-10 grid grid-cols-2 gap-4 content-end pt-[70px] font-bold text-[#525C60]">
               <div>
                 <p>Nome: {usuario.nome} </p>
@@ -110,7 +113,7 @@ function Perfil() {
         </div>
 
         {seuUsuario?.tipo?.toLowerCase() === "adm" && (
-          <ListaIConsCategoriasAdm />
+          <ListaIconsCategoriasAdm categorias={suaCategoria}></ListaIconsCategoriasAdm>
         )}
 
         {seuUsuario?.tipo?.toLowerCase() === "vendedor" && (

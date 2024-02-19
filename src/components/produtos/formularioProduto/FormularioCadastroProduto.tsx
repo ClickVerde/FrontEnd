@@ -48,6 +48,7 @@ function FormularioProduto() {
       },
     });
   }
+  
   async function buscarCategoriaPorId(id: string) {
     await buscar(`/categorias/${id}`, setCategoria, {
       headers: {
@@ -231,17 +232,15 @@ function FormularioProduto() {
         <button
           disabled={carregandoCategoria}
           type="submit"
-          className="rounded-[10px] bg-darkMossGreen border border-darkMossGreen hover:bg-[#f7f7f7] hover:text-darkMossGreen text-white w-2/6 h-[60px] p-4 flex justify-center items-center"
-        >
-          {carregandoCategoria || isLoading ? (
-            <RotatingLines
+          className="rounded-[10px] bg-darkMossGreen text-white w-2/6 h-[60px] p-4 flex justify-center items-center ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-300 shadow-md cursor-pointer">
+          {isLoading ? <RotatingLines
               strokeColor="white"
               strokeWidth="5"
               animationDuration="0.75"
               width="24"
               visible={true}
             />
-          ) : id !== undefined ? (
+           : id !== undefined ? (
             "Editar"
           ) : (
             "Cadastrar"

@@ -29,7 +29,7 @@ function ListaProdutoLoja(props: CardProdutoProps) {
             <CardProdutoLoja key={produto.id} prod={produto} />
           ))
         ) : (
-          <p>Nenhum produto encontrado.</p>
+          <p className="text-black">Nenhum produto encontrado.</p>
         )}
       </div>
     </>

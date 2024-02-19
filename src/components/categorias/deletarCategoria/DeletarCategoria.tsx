@@ -6,14 +6,16 @@ import Categoria from "../../../models/Categorias";
 import { buscar, deletar } from "../../../services/Service";
 import { toastAlerta } from "../../../utils/toastAlerta";
 
-function DeletarCategoria() {
+interface DeletarCategoriaProps {
+  id: number;
+}
+
+function DeletarCategoria({ id }: DeletarCategoriaProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
 
   let navigate = useNavigate();
-
-  const { id } = useParams<{ id: string }>();
 
   const { usuario, handleLogout } = useContext(AuthContext);
 

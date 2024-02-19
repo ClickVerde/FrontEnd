@@ -2,7 +2,7 @@ import "./App.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DeletarCategoria from "./components/categorias/deletarCategoria/DeletarCategoria";
-import FormularioCategoria from "./components/categorias/formularioCategoria/FormularioCategoria";
+import FormularioCategoria from "./components/categorias/formularioCategoria/FormularioCadastroCategoria";
 import ListaCategoria from "./components/categorias/listaCategoria/ListaCategoria";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Header";

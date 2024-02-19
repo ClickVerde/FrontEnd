@@ -80,23 +80,23 @@ function DeletarProduto({ id }: DeletarProdutoProps) {
         Você tem certeza de que deseja apagar o produto?
       </p>
 
-      <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-        <h6 className="py-2 px-6 bg-darkMossGreen text-white font-bold text-2xl">
-          Produto
+      <div className="bg-seasalt flex flex-col rounded-2xl overflow-hidden justify-between shadow-lg">
+        <h6 className="mt-4 px-6 text-black text-lg">
+          Seu Produto:
         </h6>
         <div className="p-4">
-          <p className="text-xl h-full">{produto.nome}</p>
-          <p>{produto.descricao}</p>
+          <p className="text-2xl h-full font-medium m-2 uppercase">{produto.nome}</p>
+          <p className="text-xl h-full font-medium m-2">{produto.descricao}</p>
         </div>
         <div className="flex">
           <button
-            className="text-slate-100 textButton bg-[#FF5757] w-full py-2"
+            className="text-black textButton border border-sunglow bg-sunglow hover:bg-white hover:text-sunglow hover:border hover:border-sunglow rounded-lg w-full shadow-lg m-4 py-2"
             onClick={retornar}
           >
             Não
           </button>
           <button
-            className="w-full text-slate-100 bg-[#7BD389]  flex items-center justify-center"
+            className="textButton w-full border text-slate-100 bg-[#FF5757] hover:bg-white hover:text-[#FF5757] hover:border-[#FF5757] rounded-lg m-4 flex items-center justify-center shadow-lg"
             onClick={deletarProduto}
           >
             {isLoading ? (
@@ -108,7 +108,7 @@ function DeletarProduto({ id }: DeletarProdutoProps) {
                 visible={true}
               />
             ) : (
-              <span className="text-white textButton">Sim</span>
+              <p>Sim</p>
             )}
           </button>
         </div>
